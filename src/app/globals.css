@@ -1,0 +1,332 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   Done For You Leads — design tokens
+   Palette is carried forward from the McNamer brand system, re-tuned to the
+   Done For You Leads wavelength:
+   navy #16304D (primary) + violet #A46BE8 (accent), extended with a deeper
+   "midnight" ground and five "wavelength" hues — one per business. The JM
+   mark is a prism, so the five businesses are treated as light refracted
+   from a single source rather than as five unrelated logos.
+   ========================================================================== */
+
+@theme {
+  /* Ground */
+  --color-midnight: #0a1626;
+  --color-navy: #16304d;
+  --color-navy-600: #1e4269;
+  --color-navy-300: #4a6f96;
+  --color-slate: #8fa3b8;
+  --color-paper: #f6f3ec;
+  --color-paper-200: #e7e1d5;
+
+  /* Accent */
+  --color-brass: #a46be8;
+  --color-brass-soft: #c4a0f0;
+
+  /* Fixed inks — never flip with the theme. onaccent = text on brass;
+     ink = dark text on permanently-light surfaces (e.g. the Process cards). */
+  --color-onaccent: #0a1626;
+  --color-ink: #16304d;
+
+  /* Fixed header surface — navy by default (dark mode), soft off-white in light. */
+  --header-bg: #16304d;
+  /* White chip behind the logo in dark mode so the JM mark stays legible. */
+  --logo-bg: #ffffff;
+
+  /* Wavelengths — one per business, in refraction order */
+  --color-wave-amber: #a46be8;
+  --color-wave-azure: #3f8fd1;
+  --color-wave-indigo: #6b7be8;
+  --color-wave-violet: #a46be8;
+  --color-wave-teal: #a46be8;
+
+  /* Type — Montserrat (headings + tracked labels) paired with Poppins (body).
+     --font-mono keeps its name for the many uppercase-tracked label call sites,
+     but now resolves to Montserrat so the whole site runs on just two families. */
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  /* Rhythm */
+  --spacing-section: 7.5rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Theming. Dark is the default (the brand's native mode). Light remaps the
+   palette tokens at runtime; because every utility resolves a --color-* var,
+   the whole site flips without touching component classes. Permanently-dark
+   "night" zones (hero, header, footer, CTA) re-assert the dark palette so they
+   stay cinematic in either mode.
+   ========================================================================== */
+:root {
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --color-midnight: #ffffff; /* clean white ground */
+  --color-navy: #f3f5f8; /* faint cool grey for alternating sections */
+  --color-navy-600: #dfe4ea;
+  --color-navy-300: #a7b1bd;
+  --color-slate: #566270; /* muted text — AA (>=4.5:1) on white */
+  --color-white: #17293d; /* "white" text becomes deep navy ink */
+  --color-paper: #ffffff; /* brightest surface (Process) */
+  --color-brass: #6d28d9; /* deepened violet — AA-legible accent text on light */
+  --color-brass-soft: #7c3aed;
+  --header-bg: #fafafa;
+  --logo-bg: transparent;
+}
+
+/* Light mode: glass panels become clean white cards with a soft shadow. */
+[data-theme='light'] .glass {
+  background-color: #ffffff;
+  border-color: rgba(23, 41, 61, 0.08);
+  box-shadow:
+    0 1px 2px rgba(23, 41, 61, 0.06),
+    0 12px 30px -14px rgba(23, 41, 61, 0.12);
+}
+@media (hover: hover) {
+  [data-theme='light'] .lift:hover {
+    box-shadow: 0 22px 44px -18px rgba(23, 41, 61, 0.22);
+    border-color: color-mix(in oklab, var(--color-brass) 30%, transparent);
+  }
+}
+
+.night {
+  color-scheme: dark;
+  --color-midnight: #0a1626;
+  --color-navy: #16304d;
+  --color-navy-600: #1e4269;
+  --color-navy-300: #4a6f96;
+  --color-slate: #8fa3b8;
+  --color-white: #ffffff;
+  --color-paper: #f6f3ec;
+  --color-brass: #a46be8;
+  --color-brass-soft: #c4a0f0;
+}
+
+@layer base {
+  * {
+    @apply border-white/10;
+  }
+
+  html {
+    background-color: var(--color-midnight);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-midnight text-slate antialiased;
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    @apply text-white;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, branded focus ring everywhere. */
+  :focus-visible {
+    @apply outline-brass outline-2 outline-offset-3;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    @apply bg-brass text-onaccent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Page shell: one gutter definition, used by every section. */
+  .shell {
+    @apply mx-auto w-full max-w-[76rem] px-6 sm:px-8 lg:px-10;
+  }
+
+  /* The eyebrow label: mono, tracked, brass tick. */
+  .eyebrow {
+    @apply text-brass inline-flex items-center gap-2.5 text-[0.6875rem] font-medium tracking-[0.22em] uppercase;
+    font-family: var(--font-mono);
+  }
+
+  /* A hairline that reads as a beam rather than a border. */
+  .beam-x {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-brass) 55%, transparent),
+      transparent
+    );
+  }
+
+  /* Ambient light behind dark sections — the prism's spill. */
+  .spill {
+    background:
+      radial-gradient(
+        60rem 40rem at 78% -10%,
+        color-mix(in oklab, var(--color-navy) 85%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        40rem 30rem at 0% 100%,
+        color-mix(in oklab, var(--color-brass) 8%, transparent),
+        transparent 65%
+      );
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ======================================================================
+     Glass design language — carried from the hero so the whole site reads
+     as one system: translucent panels, interactive depth, a brass edge.
+     ====================================================================== */
+
+  /* Translucent panel: blur, hairline border, layered shadow, top inner light. */
+  .glass {
+    background-color: color-mix(in oklab, white 6%, transparent);
+    border: 1px solid color-mix(in oklab, white 14%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    box-shadow:
+      0 30px 70px -30px rgba(3, 8, 16, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Interactive depth — the surface lifts toward the viewer on hover. */
+  .lift {
+    transition:
+      transform 0.5s var(--ease-out-expo),
+      box-shadow 0.5s var(--ease-out-expo),
+      border-color 0.4s var(--ease-out-expo),
+      background-color 0.4s var(--ease-out-expo);
+  }
+
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 46px 90px -34px rgba(3, 8, 16, 0.85);
+      border-color: color-mix(in oklab, var(--color-brass) 35%, transparent);
+    }
+  }
+
+  /* Brass hairline along a panel's top edge. Requires a positioned parent. */
+  .brass-edge::before {
+    content: '';
+    position: absolute;
+    inset-inline: 1.5rem;
+    top: -1px;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-brass) 70%, transparent),
+      transparent
+    );
+  }
+
+  /* Scroll-snap carousels hide their scrollbar; arrows/dots drive them. */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom cursor: suppress the native pointer, but keep a caret in fields. */
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none;
+  }
+  .has-custom-cursor input,
+  .has-custom-cursor textarea,
+  .has-custom-cursor select {
+    cursor: auto;
+  }
+}
+
+/* ==========================================================================
+   OS Analytics / XAD assistant chat widget — recolour to brand brass.
+   Best-effort: the widget's own styling lives on the WordPress side, so this
+   overrides its CSS variables and the common launcher / header / send surfaces.
+   Scoped to osa-/xad- prefixes so it never touches the rest of the site.
+   ========================================================================== */
+[class*='osa-'],
+[id*='osa-'],
+[class*='xad-'],
+[id*='xad-'] {
+  --osa-primary: #16304d !important;
+  --osa-accent: #16304d !important;
+  --osa-color: #16304d !important;
+  --osa-brand: #16304d !important;
+  --osa-primary-color: #16304d !important;
+  --xad-primary: #16304d !important;
+  --xad-accent: #16304d !important;
+}
+[class*='osa-'][class*='header'],
+[class*='osa-'][class*='launcher'],
+[class*='osa-'][class*='fab'],
+[class*='osa-'][class*='send'],
+[class*='osa-'][class*='primary'],
+[class*='xad-'][class*='header'],
+[class*='xad-'][class*='launcher'],
+[class*='xad-'][class*='fab'],
+[class*='xad-'][class*='send'] {
+  background-color: #16304d !important;
+  border-color: #16304d !important;
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+/* Hover: brass, like the site's primary button. */
+[class*='osa-'][class*='header']:hover,
+[class*='osa-'][class*='launcher']:hover,
+[class*='osa-'][class*='fab']:hover,
+[class*='osa-'][class*='send']:hover,
+[class*='osa-'][class*='primary']:hover,
+[class*='xad-'][class*='header']:hover,
+[class*='xad-'][class*='launcher']:hover,
+[class*='xad-'][class*='fab']:hover,
+[class*='xad-'][class*='send']:hover {
+  background-color: #a46be8 !important;
+  border-color: #a46be8 !important;
+  color: #0a1626 !important;
+  fill: #0a1626 !important;
+}
