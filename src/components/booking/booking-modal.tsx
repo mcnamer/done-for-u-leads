@@ -47,14 +47,14 @@ export function BookingModal() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="night fixed inset-0 z-[150]"
+          className="fixed inset-0 z-[150]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
         >
           {/* Backdrop — fixed, never scrolls away */}
-          <div aria-hidden className="bg-midnight/85 absolute inset-0 backdrop-blur-sm" />
+          <div aria-hidden className="absolute inset-0 bg-ink/70 backdrop-blur-sm" />
 
           {/* Scroll layer: the panel scrolls within this, the backdrop stays put */}
           <div className="absolute inset-0 overflow-y-auto overscroll-contain">
@@ -78,7 +78,7 @@ export function BookingModal() {
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close"
-                  className="text-slate hover:text-brass hover:border-brass/60 absolute -top-3 -right-3 z-20 grid size-10 place-items-center rounded-full border border-white/15 bg-midnight backdrop-blur-xl transition-colors"
+                  className="absolute -top-3 -right-3 z-20 grid size-10 place-items-center rounded-full border-2 border-ink bg-paper text-ink transition-colors hover:bg-lime"
                 >
                   <X className="size-5" />
                 </button>

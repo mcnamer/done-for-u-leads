@@ -45,20 +45,17 @@ export default function BlogsPage() {
         ]}
       />
 
-      <Section shapes>
-        <div className="shell">
+      <Section>
+        <div className="wrap">
           {posts.length === 0 ? (
-            /* A real empty state: it sends you somewhere useful instead of saying
-               "coming soon" and stopping. */
             <Reveal>
-              <div className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-white/[0.02] p-10 text-center sm:p-14">
-                <h2 className="font-display text-2xl font-semibold text-white sm:text-3xl">
+              <div className="slab mx-auto max-w-2xl rounded-xl p-10 text-center sm:p-14">
+                <h2 className="text-2xl text-ink sm:text-3xl">
                   The first article is still being written
                 </h2>
-                <p className="mt-5 leading-relaxed">
-                  In the meantime, Jody publishes on video — market reality, VA loans, what actually
-                  works for agents, and <span className="text-white">Autism, Answered</span>, the
-                  series he films with his son Tyler.
+                <p className="mt-5 leading-relaxed text-ink-2">
+                  In the meantime, Jody publishes on video — lead generation, follow-up, conversion,
+                  and what actually works for agents.
                 </p>
                 <div className="mt-9 flex flex-wrap justify-center gap-4">
                   <Button asChild>
@@ -80,9 +77,9 @@ export default function BlogsPage() {
                   <Reveal delay={i * 0.05} className="h-full">
                     <Link
                       href={`/blogs/${post.slug}`}
-                      className="glass lift group relative flex h-full flex-col overflow-hidden rounded-2xl"
+                      className="slab slab-hover group relative flex h-full flex-col overflow-hidden rounded-xl"
                     >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b-2 border-ink">
                         <Image
                           src={post.image}
                           alt={post.imageAlt}
@@ -91,19 +88,17 @@ export default function BlogsPage() {
                           style={{ objectPosition: post.imagePos ?? 'center' }}
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <span className="absolute top-4 left-4 rounded-full border border-white/20 bg-black/45 px-3 py-1 font-mono text-[0.625rem] tracking-[0.14em] text-white uppercase backdrop-blur-md">
+                        <span className="absolute top-4 left-4 rounded border-2 border-ink bg-lime px-2.5 py-1 font-display text-[0.625rem] font-bold tracking-[0.12em] text-ink uppercase">
                           {post.tag}
                         </span>
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <h2 className="font-display group-hover:text-brass text-xl font-semibold text-white transition-colors">
-                          {post.title}
-                        </h2>
-                        <p className="text-slate mt-3 line-clamp-3 flex-1 leading-relaxed">
+                        <h2 className="text-xl text-ink">{post.title}</h2>
+                        <p className="mt-3 line-clamp-3 flex-1 leading-relaxed text-ink-2">
                           {post.excerpt}
                         </p>
-                        <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
-                          <p className="text-slate font-mono text-[0.625rem] tracking-[0.14em] uppercase">
+                        <div className="mt-6 flex items-center justify-between border-t-2 border-ink pt-5">
+                          <p className="font-display text-[0.625rem] font-semibold tracking-[0.12em] text-ink-2 uppercase">
                             <time dateTime={post.date}>
                               {new Date(post.date).toLocaleDateString('en-US', {
                                 month: 'short',

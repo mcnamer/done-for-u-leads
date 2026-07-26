@@ -64,8 +64,8 @@ export default function ContactPage() {
         ]}
       />
 
-      <Section className="grain" shapes>
-        <div className="shell grid gap-16 lg:grid-cols-12 lg:items-start">
+      <Section tone="bone">
+        <div className="wrap grid gap-16 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
             <Reveal>
               <ContactForm />
@@ -74,20 +74,20 @@ export default function ContactPage() {
 
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-8">
-                <h2 className="font-display text-xl font-semibold text-white">Direct lines</h2>
+              <div className="slab rounded-xl bg-paper p-8">
+                <h2 className="text-2xl text-ink">Direct lines</h2>
 
                 <dl className="mt-7 space-y-6">
                   {details.map((detail) => (
                     <div key={detail.label} className="flex gap-4">
-                      <detail.icon aria-hidden className="text-brass mt-0.5 size-5 shrink-0" />
+                      <detail.icon aria-hidden className="mt-0.5 size-5 shrink-0 text-ink" />
                       <div>
-                        <dt className="text-slate font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
+                        <dt className="font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-2 uppercase">
                           {detail.label}
                         </dt>
-                        <dd className="mt-1 text-white">
+                        <dd className="mt-1 text-ink">
                           {detail.href ? (
-                            <a href={detail.href} className="hover:text-brass transition-colors">
+                            <a href={detail.href} className="transition-colors hover:text-lime-600">
                               {detail.value}
                             </a>
                           ) : (
@@ -99,17 +99,15 @@ export default function ContactPage() {
                   ))}
                 </dl>
 
-                <div className="mt-8 border-t border-white/10 pt-8">
-                  <p className="text-slate font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
+                <div className="mt-8 border-t-2 border-ink pt-8">
+                  <p className="font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-2 uppercase">
                     Serving
                   </p>
-                  <p className="mt-2 leading-relaxed text-white/85">
-                    {contact.serviceArea.join(' · ')}
-                  </p>
+                  <p className="mt-2 leading-relaxed text-ink">{contact.serviceArea.join(' · ')}</p>
                 </div>
 
-                <div className="mt-8 border-t border-white/10 pt-8">
-                  <p className="text-slate font-mono text-[0.6875rem] tracking-[0.16em] uppercase">
+                <div className="mt-8 border-t-2 border-ink pt-8">
+                  <p className="font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-2 uppercase">
                     Elsewhere
                   </p>
                   <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
@@ -119,7 +117,7 @@ export default function ContactPage() {
                           href={social.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:text-brass text-white/80 transition-colors"
+                          className="text-ink-2 transition-colors hover:text-lime-600"
                         >
                           {social.label}
                         </a>
@@ -131,15 +129,15 @@ export default function ContactPage() {
 
               <Link
                 href="/book"
-                className="border-brass/30 hover:bg-brass/5 mt-6 flex items-center justify-between gap-4 rounded-2xl border p-6 transition-colors"
+                className="mt-6 flex items-center justify-between gap-4 rounded-xl border-2 border-ink bg-lime p-6 transition-transform hover:-translate-y-0.5"
               >
                 <span>
-                  <span className="font-display block font-semibold text-white">Skip the form</span>
-                  <span className="text-slate mt-1 block text-sm">
+                  <span className="font-display block font-bold text-ink">Skip the form</span>
+                  <span className="mt-1 block text-sm text-ink/70">
                     Book straight into the calendar instead.
                   </span>
                 </span>
-                <CalendarCheck aria-hidden className="text-brass size-6 shrink-0" />
+                <CalendarCheck aria-hidden className="size-6 shrink-0 text-ink" />
               </Link>
             </Reveal>
           </div>

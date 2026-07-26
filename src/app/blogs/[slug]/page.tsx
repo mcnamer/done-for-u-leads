@@ -65,22 +65,23 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {/* Hero */}
-      <header className="night spill relative isolate overflow-hidden pt-36 pb-0 sm:pt-44">
-        <div className="shell relative z-10">
+      <header className="border-b-2 border-ink bg-paper pt-12 sm:pt-16">
+        <div className="wrap">
           <nav aria-label="Breadcrumb" className="mb-8">
             <Link
               href="/blogs"
-              className="text-slate hover:text-brass inline-flex items-center gap-2 font-mono text-xs tracking-[0.14em] uppercase transition-colors"
+              className="inline-flex items-center gap-2 font-display text-xs font-semibold tracking-[0.14em] text-ink-2 uppercase transition-colors hover:text-lime-600"
             >
               <ArrowLeft aria-hidden className="size-3.5" />
               All insights
             </Link>
           </nav>
 
-          <p className="text-brass font-mono text-[0.6875rem] tracking-[0.18em] uppercase">
+          <p className="kicker">
+            <span aria-hidden className="inline-block h-2 w-2 bg-lime" />
             {post.tag}
           </p>
-          <h1 className="mt-5 max-w-4xl text-3xl leading-[1.08] font-semibold tracking-[-0.02em] text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-5 max-w-4xl text-[clamp(2.25rem,5vw,3.75rem)] leading-[0.95] text-ink">
             {post.title}
           </h1>
 
@@ -91,27 +92,27 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 alt=""
                 width={36}
                 height={36}
-                className="size-9 rounded-full border border-white/15"
+                className="size-9 rounded-full border-2 border-ink"
               />
               <span className="text-sm">
-                <span className="block font-medium text-white">{post.author}</span>
-                <span className="text-slate text-xs">Broker · Coach · Advocate</span>
+                <span className="block font-display font-semibold text-ink">{post.author}</span>
+                <span className="text-xs text-ink-2">Founder, Done For You Leads</span>
               </span>
             </span>
             {post.approved && <VerifiedBadge />}
-            <span className="text-slate flex items-center gap-2 text-sm">
+            <span className="flex items-center gap-2 text-sm text-ink-2">
               <Calendar aria-hidden className="size-4" />
               <time dateTime={post.date}>{fmt(post.date)}</time>
             </span>
-            <span className="text-slate flex items-center gap-2 text-sm">
+            <span className="flex items-center gap-2 text-sm text-ink-2">
               <Clock aria-hidden className="size-4" />
               {post.readingMinutes} min read
             </span>
           </div>
         </div>
 
-        <div className="shell relative z-10 mt-12">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-3xl border border-white/10 border-b-0">
+        <div className="wrap mt-12">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-xl border-2 border-b-0 border-ink">
             <Image
               src={post.image}
               alt={post.imageAlt}
@@ -126,22 +127,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       </header>
 
       {/* Body */}
-      <Section className="pt-16">
-        <div className="shell">
+      <Section>
+        <div className="wrap">
           <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <p className="text-xl leading-relaxed text-white/90">{post.excerpt}</p>
+              <p className="text-xl leading-relaxed font-medium text-ink">{post.excerpt}</p>
 
               <div className="mt-10 space-y-8">
                 {post.content.map((block, i) => (
                   <Reveal key={i} delay={i * 0.03}>
                     <div>
                       {block.heading && (
-                        <h2 className="font-display mb-4 text-2xl font-semibold text-white">
-                          {block.heading}
-                        </h2>
+                        <h2 className="mb-4 text-2xl text-ink">{block.heading}</h2>
                       )}
-                      <div className="space-y-4 leading-relaxed">
+                      <div className="space-y-4 leading-relaxed text-ink-2">
                         {block.body.map((p, j) => (
                           <p key={j}>{p}</p>
                         ))}
@@ -152,12 +151,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </div>
 
               {/* Verified footer */}
-              <div className="glass brass-edge relative mt-14 flex flex-col gap-4 rounded-2xl p-7 sm:flex-row sm:items-center sm:justify-between">
+              <div className="slab mt-14 flex flex-col gap-4 rounded-xl bg-paper p-7 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="font-display text-lg font-semibold text-white">
-                    Reviewed by {post.author}
-                  </p>
-                  <p className="text-slate mt-1 text-sm">
+                  <p className="font-display text-lg font-bold text-ink">Reviewed by {post.author}</p>
+                  <p className="mt-1 text-sm text-ink-2">
                     Every article here is checked and approved by Jody before it is published.
                   </p>
                 </div>
@@ -169,14 +166,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <aside className="lg:col-span-4">
               <div className="lg:sticky lg:top-28">
                 {post.takeaways && post.takeaways.length > 0 && (
-                  <div className="glass relative rounded-2xl p-7">
-                    <p className="text-slate font-mono text-[0.6875rem] tracking-[0.2em] uppercase">
+                  <div className="slab rounded-xl bg-paper p-7">
+                    <p className="font-display text-[0.6875rem] font-semibold tracking-[0.2em] text-ink-2 uppercase">
                       Key takeaways
                     </p>
                     <ul className="mt-5 space-y-3.5">
                       {post.takeaways.map((t) => (
-                        <li key={t} className="flex gap-3 text-sm leading-relaxed text-white/85">
-                          <span aria-hidden className="bg-brass mt-1.5 size-1.5 shrink-0 rounded-full" />
+                        <li key={t} className="flex gap-3 text-sm leading-relaxed text-ink">
+                          <span aria-hidden className="mt-1.5 size-2 shrink-0 bg-lime" />
                           {t}
                         </li>
                       ))}
@@ -184,16 +181,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </div>
                 )}
 
-                <div className="border-brass/25 from-brass/10 relative mt-6 overflow-hidden rounded-2xl border bg-gradient-to-br to-transparent p-7">
-                  <h3 className="font-display text-lg font-semibold text-white">
-                    Have a question for Jody?
-                  </h3>
-                  <p className="text-slate mt-2 text-sm leading-relaxed">
+                <div className="mt-6 rounded-xl border-2 border-ink bg-lime p-7">
+                  <h3 className="text-lg text-ink">Have a question for Jody?</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">
                     The answer is free and so is the call.
                   </p>
-                  <Button asChild className="mt-5" size="sm">
+                  <Button asChild variant="solid" className="mt-5" size="sm">
                     <Link href="/book">
-                      Book a consultation
+                      Book a strategy call
                       <ArrowUpRight aria-hidden />
                     </Link>
                   </Button>
@@ -204,16 +199,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           {/* Related */}
           {related.length > 0 && (
-            <div className="mx-auto mt-20 max-w-6xl border-t border-white/10 pt-14">
-              <h2 className="font-display text-2xl font-semibold text-white">Keep reading</h2>
+            <div className="mx-auto mt-20 max-w-6xl border-t-2 border-ink pt-14">
+              <h2 className="text-2xl text-ink">Keep reading</h2>
               <ul className="mt-8 grid gap-6 md:grid-cols-3">
                 {related.map((r) => (
                   <li key={r.slug}>
                     <Link
                       href={`/blogs/${r.slug}`}
-                      className="glass lift group relative flex h-full flex-col overflow-hidden rounded-2xl"
+                      className="slab slab-hover group relative flex h-full flex-col overflow-hidden rounded-xl"
                     >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b-2 border-ink">
                         <Image
                           src={r.image}
                           alt={r.imageAlt}
@@ -224,12 +219,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                         />
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <p className="text-brass font-mono text-[0.625rem] tracking-[0.16em] uppercase">
+                        <p className="font-display text-[0.625rem] font-semibold tracking-[0.16em] text-lime-600 uppercase">
                           {r.tag}
                         </p>
-                        <h3 className="font-display mt-3 text-lg leading-snug font-semibold text-white group-hover:text-brass">
-                          {r.title}
-                        </h3>
+                        <h3 className="mt-3 text-lg leading-snug text-ink">{r.title}</h3>
                       </div>
                     </Link>
                   </li>

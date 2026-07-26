@@ -31,7 +31,7 @@ export default function TermsPage() {
       />
 
       <Section>
-        <div className="shell">
+        <div className="wrap">
           <LegalProse>
             <section>
               <h2>Using this site</h2>

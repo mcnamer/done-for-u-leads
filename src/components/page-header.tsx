@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Eyebrow } from './section';
-import { SectionGlow } from '@/components/section-glow';
 
 /**
- * Page hero. Each page passes its own background image, scrimmed into the brand
- * midnight so the header stays legible over it and the copy reads. A `night`
- * zone — always cinematic, in either theme.
+ * Interior page header — editorial and bright. Big headline on paper, an
+ * optional framed image on the right with a hard offset shadow.
  */
 export function PageHeader({
   eyebrow,
@@ -26,67 +23,59 @@ export function PageHeader({
   imagePos?: string;
 }) {
   return (
-    <header className="night relative isolate flex min-h-[58vh] items-end overflow-hidden pt-36 pb-14 sm:min-h-[62vh] sm:pt-44 sm:pb-20">
-      {/* Background */}
-      {image ? (
-        <>
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectPosition: imagePos }}
-            className="object-cover"
-          />
-          {/* Keep the lower-left dark for the copy; leave the upper-right clear
-              so Jody's face (or the scene) reads fully. */}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-[#0a1626] via-[#0a1626]/55 to-transparent"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-r from-[#0a1626]/92 via-[#0a1626]/35 to-transparent"
-          />
-        </>
-      ) : (
-        <SectionGlow />
-      )}
-      <div aria-hidden className="grain pointer-events-none absolute inset-0" />
+    <header className="border-b-2 border-ink bg-paper">
+      <div className="wrap grid gap-10 py-14 lg:grid-cols-12 lg:items-center lg:py-20">
+        <div className={image ? 'lg:col-span-7' : 'lg:col-span-10'}>
+          <nav aria-label="Breadcrumb" className="mb-7">
+            <ol className="flex flex-wrap items-center gap-2 font-display text-xs text-ink-2">
+              {breadcrumb.map((crumb, i) => (
+                <li key={crumb.path} className="flex items-center gap-2">
+                  {i > 0 && (
+                    <span aria-hidden className="text-ink/30">
+                      /
+                    </span>
+                  )}
+                  {i === breadcrumb.length - 1 ? (
+                    <span aria-current="page" className="text-ink">
+                      {crumb.name}
+                    </span>
+                  ) : (
+                    <Link href={crumb.path} className="transition-colors hover:text-lime-600">
+                      {crumb.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
 
-      <div className="shell relative z-10 w-full">
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="text-slate flex flex-wrap items-center gap-2 font-mono text-xs">
-            {breadcrumb.map((crumb, i) => (
-              <li key={crumb.path} className="flex items-center gap-2">
-                {i > 0 && (
-                  <span aria-hidden className="text-slate/40">
-                    /
-                  </span>
-                )}
-                {i === breadcrumb.length - 1 ? (
-                  <span aria-current="page" className="text-white/70">
-                    {crumb.name}
-                  </span>
-                ) : (
-                  <Link href={crumb.path} className="hover:text-brass transition-colors">
-                    {crumb.name}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
+          <span className="kicker">
+            <span aria-hidden className="inline-block h-2 w-2 bg-lime" />
+            {eyebrow}
+          </span>
+          <h1 className="mt-5 max-w-3xl text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.92] text-ink">
+            {title}
+          </h1>
+          {lede && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">{lede}</p>}
+        </div>
 
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="mt-5 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-[-0.02em] text-white sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        {lede && <p className="text-paper/85 mt-6 max-w-2xl text-lg leading-relaxed">{lede}</p>}
+        {image && (
+          <div className="lg:col-span-5">
+            <div className="slab overflow-hidden rounded-xl">
+              <Image
+                src={image}
+                alt={imageAlt}
+                width={1200}
+                height={1200}
+                priority
+                sizes="(max-width: 1024px) 100vw, 32rem"
+                style={{ objectPosition: imagePos }}
+                className="aspect-[5/4] w-full object-cover"
+              />
+            </div>
+          </div>
+        )}
       </div>
-
-      <div aria-hidden className="beam-x absolute right-0 bottom-0 left-0 z-10 h-px" />
     </header>
   );
 }

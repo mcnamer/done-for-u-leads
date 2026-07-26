@@ -3,22 +3,26 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
+/**
+ * Editorial buttons: rectangular, thick ink border, hard offset shadow that
+ * collapses on press. The primary is electric lime with black text.
+ */
 const buttonVariants = cva(
-  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-300 will-change-transform hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:cursor-default disabled:opacity-50 motion-reduce:transform-none [&_svg]:size-4 [&_svg]:shrink-0',
+  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-[0.55rem] border-2 border-ink font-display font-semibold transition-all duration-200 ease-[cubic-bezier(0.2,0.9,0.3,1)] disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.1em] [&_svg]:shrink-0',
   {
     variants: {
       variant: {
         primary:
-          'bg-brass text-onaccent hover:bg-brass-soft hover:shadow-[0_0_32px_-8px_var(--color-brass)]',
-        outline:
-          'border border-white/20 text-white hover:border-brass/70 hover:text-brass bg-transparent',
-        ghost: 'text-slate hover:text-white bg-transparent',
-        inverse: 'bg-midnight text-white hover:bg-navy',
+          'bg-lime text-ink shadow-[3px_3px_0_0_var(--color-ink)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_var(--color-ink)] active:translate-x-0 active:translate-y-0 active:shadow-[1px_1px_0_0_var(--color-ink)]',
+        solid:
+          'bg-ink text-paper shadow-[3px_3px_0_0_var(--color-lime)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_var(--color-lime)] active:translate-x-0 active:translate-y-0 active:shadow-[1px_1px_0_0_var(--color-lime)]',
+        outline: 'bg-transparent text-ink hover:bg-ink hover:text-paper',
+        ghost: 'border-transparent bg-transparent text-ink hover:bg-ink/[0.06]',
       },
       size: {
-        sm: 'h-9 px-4 text-sm rounded-full',
-        md: 'h-11 px-6 text-[0.9375rem] rounded-full',
-        lg: 'h-13 px-8 text-base rounded-full',
+        sm: 'h-9 px-4 text-sm',
+        md: 'h-11 px-5 text-[0.95rem]',
+        lg: 'h-13 px-7 text-base',
       },
     },
     defaultVariants: { variant: 'primary', size: 'md' },
@@ -26,7 +30,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

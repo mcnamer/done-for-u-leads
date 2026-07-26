@@ -2,33 +2,33 @@ export type Faq = { question: string; answer: string };
 
 export const faqs: Faq[] = [
   {
-    question: 'What areas do you serve?',
+    question: 'What exactly is “done for you”?',
     answer:
-      'Kitsap, King, Pierce and Thurston Counties in Western Washington. Jody is based in Port Orchard and works throughout the Puget Sound region, with a particular focus on military households near the Kitsap bases.',
+      'All of it. We define your unique selling proposition, build the ad creative and landing pages, target the right micro-audiences, write the individualized messaging, and run and optimize the campaigns. You take the appointments — you never touch a dashboard.',
   },
   {
-    question: 'Can you handle the loan and the home purchase together?',
+    question: 'How is this different from buying leads from a big portal?',
     answer:
-      'Yes. Jody is a broker with The Real Brokerage and a mortgage professional with One Real Mortgage, so the financing and the transaction can be handled by one team. Fewer handoffs means fewer surprises in the last week before closing.',
+      'Portal leads are shared with every other agent and shaped around the portal’s brand, not yours. We build campaigns around what makes YOU different, so the people who reach out already resonate with your positioning — not just a listing photo.',
   },
   {
-    question: 'Do you work with VA buyers?',
+    question: 'What is a “unique selling proposition” and why does it matter?',
     answer:
-      'Often. Jody is a Navy veteran and works regularly with military households using VA benefits — including buyers who have been told their offer will not compete. It usually can.',
+      'It’s the one clear reason a client should pick you over the dozen other agents in your area. Most agents look identical online. We find your edge first — because a campaign built on “just another realtor” converts like one.',
   },
   {
-    question: 'I am an agent. Is coaching worth it in this market?',
+    question: 'Who is behind Done For You Leads?',
     answer:
-      'That is exactly what a coaching consultation is for. Bring your numbers. If coaching is not the right lever for where you are, Jody will say so on the call rather than sell you a program.',
+      'Jody McNamer — a 20+ year real estate veteran, nationally ranked trainer, and founder of the McNamer group of companies. The system was built and proven with working agents, not theorized by a marketing agency.',
   },
   {
-    question: 'What happens on a consultation?',
+    question: 'How soon do leads start coming in?',
     answer:
-      'A conversation — not a pitch. You describe where you are and where you want to go, and you leave with a clear view of your options and what the next step costs you. There is no charge for the first call.',
+      'Once your campaigns are built and approved, they go live and the first conversations typically follow within the first couple of weeks. We watch the numbers daily and keep tuning as real responses come in.',
   },
   {
-    question: 'How is AutismWorks connected to the rest of this?',
+    question: 'What does the first call cost?',
     answer:
-      'AutismWorks was co-founded with Jody\u2019s son Tyler McNamer, a published author who lives with autism. It is the reason the rest of the businesses are run the way they are: one person at a time.',
+      'Nothing. The strategy call is free. You tell us your market and goals, and we show you exactly what a done-for-you program would look like — or tell you straight if it is not the right fit.',
   },
 ];

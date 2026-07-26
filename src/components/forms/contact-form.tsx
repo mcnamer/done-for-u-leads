@@ -50,13 +50,10 @@ export function ContactForm() {
 
   if (status === 'sent') {
     return (
-      <div
-        role="status"
-        className="border-brass/30 flex flex-col items-start rounded-2xl border bg-white/[0.03] p-10"
-      >
-        <CheckCircle2 aria-hidden className="text-brass size-9" />
-        <h3 className="font-display mt-5 text-2xl font-semibold text-white">Message sent</h3>
-        <p className="mt-3 max-w-md leading-relaxed">
+      <div role="status" className="slab flex flex-col items-start rounded-xl bg-lime p-10">
+        <CheckCircle2 aria-hidden className="size-9 text-ink" />
+        <h3 className="mt-5 text-2xl text-ink">Message sent</h3>
+        <p className="mt-3 max-w-md leading-relaxed text-ink/80">
           It lands in Jody&rsquo;s inbox, not a queue. You will hear back within one business day —
           usually the same day.
         </p>
@@ -118,7 +115,7 @@ export function ContactForm() {
             {...register('topic')}
           >
             {Object.entries(topicLabels).map(([value, label]) => (
-              <option key={value} value={value} className="bg-midnight">
+              <option key={value} value={value}>
                 {label}
               </option>
             ))}
@@ -142,7 +139,7 @@ export function ContactForm() {
       {serverError && (
         <p
           role="alert"
-          className="rounded-lg border border-red-400/40 bg-red-400/5 p-4 text-red-200"
+          className="rounded-lg border-2 border-red-600 bg-red-50 p-4 font-medium text-red-700"
         >
           {serverError}
         </p>
@@ -162,7 +159,7 @@ export function ContactForm() {
             </>
           )}
         </Button>
-        <p className="text-slate text-sm">Replies within one business day.</p>
+        <p className="text-sm text-ink-2">Replies within one business day.</p>
       </div>
     </form>
   );

@@ -31,7 +31,7 @@ export default function PrivacyPage() {
       />
 
       <Section>
-        <div className="shell">
+        <div className="wrap">
           <LegalProse>
             <section>
               <h2>What we collect</h2>

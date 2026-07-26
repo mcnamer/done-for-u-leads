@@ -6,10 +6,10 @@
 export const site = {
   name: 'Done For You Leads',
   person: 'Jody McNamer',
-  role: 'Real estate lead generation, done for you',
-  tagline: 'Predictable pipeline for agents who would rather list than chase.',
+  role: 'Real estate lead generation',
+  tagline: 'Stand out, get found, fill your calendar.',
   description:
-    'Buyer and seller campaigns built, launched and managed for you — so your calendar fills with real conversations instead of cold calls. Built and tested inside a working brokerage by an operator who still lists and sells, not a vendor guessing at what agents need.',
+    'Done For You Leads finds what makes you different, then puts it in front of the exact people looking for it — proprietary targeting, micro-audiences and individualized messaging that turn strangers into a steady stream of high-quality real estate leads.',
   locale: 'en_US',
 } as const;
 
@@ -52,8 +52,8 @@ export const primaryCta = {
 } as const;
 
 export const proofPoints = [
-  { value: '23', suffix: '+', label: 'Years operating inside real estate' },
-  { value: '500', suffix: '+', label: 'Properties personally bought and sold' },
-  { value: '1000', prefix: '', suffix: 's', label: 'Agents coached and equipped' },
-  { value: '1', label: 'Team running your pipeline for you' },
+  { value: '20', suffix: '+', label: 'Years marketing real estate' },
+  { value: '1000', suffix: 's', label: 'Agents trained nationwide' },
+  { value: '1:1', suffix: '', label: 'Messaging tuned to each agent' },
+  { value: '100', suffix: '%', label: 'Done for you, start to finish' },
 ] as const;

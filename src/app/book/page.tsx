@@ -61,43 +61,41 @@ export default function BookPage() {
         ]}
       />
 
-      <Section className="grain" shapes>
-        <div className="shell grid gap-14 lg:grid-cols-12 lg:items-start">
+      <Section tone="bone">
+        <div className="wrap grid gap-14 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
             <ConsultationHub />
           </div>
 
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="relative mb-10">
+              <div className="slab mb-10 overflow-hidden rounded-xl">
                 <Image
                   src="/images/jody/jody-standing-1200.webp"
                   alt="Jody McNamer"
                   width={1200}
                   height={1841}
                   sizes="(max-width: 1024px) 100vw, 24rem"
-                  className="rounded-3xl border border-white/10 object-cover"
+                  className="aspect-[4/5] w-full object-cover"
                 />
               </div>
 
-              <h2 className="font-display text-xl font-semibold text-white">
-                What actually happens on the call
-              </h2>
+              <h2 className="text-2xl text-ink">What actually happens on the call</h2>
               <dl className="mt-6 space-y-6">
                 {expectations.map((item) => (
-                  <div key={item.title} className="flex gap-4 border-l border-white/10 pl-5">
+                  <div key={item.title} className="flex gap-4 border-l-2 border-ink pl-5">
                     <IconChip icon={item.icon} hue={item.hue} className="mt-0.5" />
                     <div>
-                      <dt className="font-medium text-white">{item.title}</dt>
-                      <dd className="mt-1.5 leading-relaxed">{item.body}</dd>
+                      <dt className="font-display font-semibold text-ink">{item.title}</dt>
+                      <dd className="mt-1.5 leading-relaxed text-ink-2">{item.body}</dd>
                     </div>
                   </div>
                 ))}
               </dl>
 
-              <p className="text-slate mt-8 border-t border-white/10 pt-8 text-sm leading-relaxed">
+              <p className="mt-8 border-t-2 border-ink pt-8 text-sm leading-relaxed text-ink-2">
                 Prefer the phone?{' '}
-                <a href={contact.phoneHref} className="text-brass hover:text-brass-soft">
+                <a href={contact.phoneHref} className="font-semibold text-lime-600">
                   {contact.phone}
                 </a>{' '}
                 — {contact.hours}.
