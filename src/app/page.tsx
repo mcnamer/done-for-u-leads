@@ -15,6 +15,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
+import { VideoEmbed } from '@/components/video-embed';
 import { Button } from '@/components/ui/button';
 import { proofPoints } from '@/content/site';
 import { faqs } from '@/content/faqs';
@@ -184,6 +185,35 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+
+      {/* ===================== VIDEO ===================== */}
+      <section className="border-b border-hair bg-paper">
+        <div className="wrap py-20 lg:py-28">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <Reveal className="lg:col-span-5">
+              <span className="kicker">Watch</span>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
+                See it for yourself.
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-2">
+                Press play for a quick look at how Done For You Leads finds what makes you different
+                and turns it into real conversations with buyers and sellers.
+              </p>
+              <div className="mt-8">
+                <Button asChild>
+                  <Link href="/book">
+                    Book a strategy call
+                    <ArrowUpRight aria-hidden />
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1} className="lg:col-span-7">
+              <VideoEmbed id="-h-lXL3KoE0" title="Done For You Leads" />
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* ===================== POSITIONING ===================== */}
       <section className="border-b border-hair bg-paper">
