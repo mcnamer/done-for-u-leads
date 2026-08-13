@@ -32,21 +32,23 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b-2 border-ink bg-paper transition-shadow',
-        scrolled && 'shadow-[0_4px_0_0_var(--color-lime)]',
+        'sticky top-0 z-50 border-b transition-all',
+        scrolled
+          ? 'border-hair bg-paper/85 shadow-soft-sm backdrop-blur-md'
+          : 'border-transparent bg-paper',
       )}
     >
       <div className="wrap flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} — home`}>
-          <span className="grid size-9 place-items-center rounded-md border-2 border-ink bg-lime font-display text-sm font-bold text-ink">
+          <span className="grid size-9 place-items-center rounded-xl bg-brand-strong font-display text-sm font-extrabold text-white">
             DL
           </span>
-          <span className="font-display text-[0.95rem] leading-none font-bold tracking-[-0.02em] text-ink uppercase">
-            Done For You <span className="bg-lime px-1">Leads</span>
+          <span className="font-display text-[1.0625rem] leading-none font-extrabold tracking-[-0.02em] text-ink">
+            Done For You <span className="text-brand-strong">Leads</span>
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => {
             const active = pathname === item.href;
             return (
@@ -55,9 +57,8 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'font-display text-[0.95rem] font-medium text-ink transition-colors',
-                  'hover:decoration-lime relative decoration-2 underline-offset-[6px] hover:underline',
-                  active && 'decoration-lime underline',
+                  'font-display text-[0.95rem] font-medium transition-colors',
+                  active ? 'text-brand-strong' : 'text-ink hover:text-brand-strong',
                 )}
               >
                 {item.label}
@@ -79,7 +80,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="grid size-10 place-items-center rounded-md border-2 border-ink text-ink lg:hidden"
+            className="grid size-10 place-items-center rounded-xl border border-hair text-ink lg:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -87,7 +88,7 @@ export function SiteHeader() {
       </div>
 
       {/* Mobile navigation */}
-      <div id="mobile-nav" hidden={!open} className="border-t-2 border-ink bg-paper lg:hidden">
+      <div id="mobile-nav" hidden={!open} className="border-t border-hair bg-paper lg:hidden">
         <nav aria-label="Primary (mobile)" className="wrap flex flex-col py-4">
           {nav.map((item) => (
             <Link

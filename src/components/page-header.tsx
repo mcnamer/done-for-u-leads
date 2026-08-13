@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 /**
- * Interior page header — editorial and bright. Big headline on paper, an
- * optional framed image on the right with a hard offset shadow.
+ * Interior page header — clean and bright. A soft violet-tinted band with a
+ * pill eyebrow, big headline, and an optional soft-shadow image on the right.
  */
 export function PageHeader({
   eyebrow,
@@ -23,7 +23,7 @@ export function PageHeader({
   imagePos?: string;
 }) {
   return (
-    <header className="border-b-2 border-ink bg-paper">
+    <header className="border-b border-hair bg-gradient-to-b from-brand-tint to-paper">
       <div className="wrap grid gap-10 py-14 lg:grid-cols-12 lg:items-center lg:py-20">
         <div className={image ? 'lg:col-span-7' : 'lg:col-span-10'}>
           <nav aria-label="Breadcrumb" className="mb-7">
@@ -40,7 +40,7 @@ export function PageHeader({
                       {crumb.name}
                     </span>
                   ) : (
-                    <Link href={crumb.path} className="transition-colors hover:text-lime-600">
+                    <Link href={crumb.path} className="transition-colors hover:text-brand-strong">
                       {crumb.name}
                     </Link>
                   )}
@@ -49,11 +49,8 @@ export function PageHeader({
             </ol>
           </nav>
 
-          <span className="kicker">
-            <span aria-hidden className="inline-block h-2 w-2 bg-lime" />
-            {eyebrow}
-          </span>
-          <h1 className="mt-5 max-w-3xl text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.92] text-ink">
+          <span className="kicker">{eyebrow}</span>
+          <h1 className="mt-5 max-w-3xl text-[clamp(2.5rem,6vw,4.25rem)] leading-[1.02] text-ink">
             {title}
           </h1>
           {lede && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">{lede}</p>}
@@ -61,7 +58,7 @@ export function PageHeader({
 
         {image && (
           <div className="lg:col-span-5">
-            <div className="slab overflow-hidden rounded-xl">
+            <div className="slab overflow-hidden rounded-[1.25rem]">
               <Image
                 src={image}
                 alt={imageAlt}

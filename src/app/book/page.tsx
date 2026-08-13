@@ -83,7 +83,7 @@ export default function BookPage() {
               <h2 className="text-2xl text-ink">What actually happens on the call</h2>
               <dl className="mt-6 space-y-6">
                 {expectations.map((item) => (
-                  <div key={item.title} className="flex gap-4 border-l-2 border-ink pl-5">
+                  <div key={item.title} className="flex gap-4 border-l border-hair pl-5">
                     <IconChip icon={item.icon} hue={item.hue} className="mt-0.5" />
                     <div>
                       <dt className="font-display font-semibold text-ink">{item.title}</dt>
@@ -93,7 +93,7 @@ export default function BookPage() {
                 ))}
               </dl>
 
-              <p className="mt-8 border-t-2 border-ink pt-8 text-sm leading-relaxed text-ink-2">
+              <p className="mt-8 border-t border-hair pt-8 text-sm leading-relaxed text-ink-2">
                 Prefer the phone?{' '}
                 <a href={contact.phoneHref} className="font-semibold text-lime-600">
                   {contact.phone}

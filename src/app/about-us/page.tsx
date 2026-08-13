@@ -120,11 +120,11 @@ export default function AboutPage() {
             </h2>
           </Reveal>
 
-          <ol className="mt-14 border-t-2 border-ink">
+          <ol className="mt-14 border-t border-hair">
             {chapters.map((chapter, i) => (
               <li key={chapter.title}>
                 <Reveal delay={i * 0.05}>
-                  <article className="grid gap-4 border-b-2 border-ink py-8 lg:grid-cols-12 lg:gap-8">
+                  <article className="grid gap-4 border-b border-hair py-8 lg:grid-cols-12 lg:gap-8">
                     <div className="lg:col-span-2">
                       <span className="font-display text-sm font-bold tracking-[0.06em] text-lime-600 uppercase">
                         {chapter.year}

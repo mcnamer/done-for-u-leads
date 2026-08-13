@@ -50,7 +50,7 @@ export function ContactForm() {
 
   if (status === 'sent') {
     return (
-      <div role="status" className="slab flex flex-col items-start rounded-xl bg-lime p-10">
+      <div role="status" className="slab flex flex-col items-start rounded-2xl bg-brand-tint p-10">
         <CheckCircle2 aria-hidden className="size-9 text-ink" />
         <h3 className="mt-5 text-2xl text-ink">Message sent</h3>
         <p className="mt-3 max-w-md leading-relaxed text-ink/80">

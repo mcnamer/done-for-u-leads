@@ -10,6 +10,9 @@ import {
   Repeat,
   BarChart3,
   Plus,
+  Star,
+  Check,
+  ShieldCheck,
 } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
 import { Button } from '@/components/ui/button';
@@ -68,21 +71,32 @@ const deliverables = [
   { icon: BarChart3, title: 'Plain-English reporting', body: 'What came in, what it cost, what converted.' },
 ];
 
+function Stars() {
+  return (
+    <span className="flex items-center gap-0.5 text-brand-strong" aria-hidden>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <Star key={i} className="size-4 fill-current" />
+      ))}
+    </span>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden border-b-2 border-ink bg-paper">
-        <div className="wrap grid gap-12 py-16 lg:grid-cols-12 lg:gap-8 lg:py-24">
+      <section className="relative overflow-hidden border-b border-hair bg-gradient-to-b from-brand-tint via-paper to-paper">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-40 -right-40 size-[34rem] rounded-full bg-brand/10 blur-3xl"
+        />
+        <div className="wrap relative grid items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-24">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="kicker">
-                <span className="inline-block h-2 w-2 bg-lime" />
-                Real estate lead generation
-              </p>
+              <span className="kicker">Real estate lead generation</span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-6 text-[clamp(2.75rem,8vw,6rem)] leading-[0.9] text-ink">
+              <h1 className="mt-6 text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-ink">
                 Be the <span className="mark">obvious</span> agent to call.
               </h1>
             </Reveal>
@@ -106,22 +120,45 @@ export default function HomePage() {
                 </Button>
               </div>
             </Reveal>
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <span className="flex items-center gap-2">
+                  <Stars />
+                  <span className="text-sm font-medium text-ink">
+                    Built by a 20-year operator
+                  </span>
+                </span>
+                <span className="hidden h-4 w-px bg-hair sm:block" />
+                <span className="flex items-center gap-2 text-sm text-ink-2">
+                  <ShieldCheck aria-hidden className="size-4 text-brand-strong" />
+                  First call’s free — no contracts
+                </span>
+              </div>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="slab relative overflow-hidden rounded-xl p-0">
-                <Image
-                  src="/images/jody/jody-coaching-1200.webp"
-                  alt="Jody McNamer, founder of Done For You Leads"
-                  width={1200}
-                  height={1200}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 34rem"
-                  className="aspect-[4/5] w-full object-cover object-top"
-                />
-                <div className="absolute bottom-0 left-0 flex items-center gap-2 border-t-2 border-r-2 border-ink bg-lime px-4 py-2">
-                  <span className="font-display text-sm font-bold text-ink">Built by an operator</span>
+              <div className="relative">
+                <div className="slab overflow-hidden rounded-[1.5rem] p-0">
+                  <Image
+                    src="/images/jody/jody-coaching-1200.webp"
+                    alt="Jody McNamer, founder of Done For You Leads"
+                    width={1200}
+                    height={1200}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 34rem"
+                    className="aspect-[4/5] w-full object-cover object-top"
+                  />
+                </div>
+                {/* Floating stat badge */}
+                <div className="absolute -bottom-5 -left-4 flex items-center gap-3 rounded-2xl border border-hair bg-paper px-5 py-4 shadow-soft sm:-left-6">
+                  <span className="font-display text-3xl font-extrabold text-brand-strong">20+</span>
+                  <span className="text-sm leading-tight text-ink-2">
+                    years marketing
+                    <br />
+                    real estate
+                  </span>
                 </div>
               </div>
             </Reveal>
@@ -130,17 +167,17 @@ export default function HomePage() {
       </section>
 
       {/* ===================== TICKER ===================== */}
-      <div className="overflow-hidden border-b-2 border-ink bg-lime py-3">
+      <div className="overflow-hidden border-b border-hair bg-paper-2 py-4">
         <div className="marquee">
           {[0, 1].map((rep) => (
             <ul key={rep} className="flex shrink-0" aria-hidden={rep === 1}>
               {ticker.map((t) => (
                 <li
                   key={t}
-                  className="flex items-center gap-4 pr-8 font-display text-sm font-bold tracking-tight text-ink uppercase"
+                  className="flex items-center gap-3 pr-8 font-display text-sm font-semibold tracking-tight text-ink-2"
                 >
                   {t}
-                  <Plus className="size-4" aria-hidden />
+                  <Plus className="size-3.5 text-brand" aria-hidden />
                 </li>
               ))}
             </ul>
@@ -149,12 +186,12 @@ export default function HomePage() {
       </div>
 
       {/* ===================== POSITIONING ===================== */}
-      <section className="border-b-2 border-ink bg-paper">
+      <section className="border-b border-hair bg-paper">
         <div className="wrap grid gap-10 py-20 lg:grid-cols-12 lg:py-28">
           <div className="lg:col-span-5">
             <Reveal>
-              <p className="kicker">The problem</p>
-              <h2 className="mt-5 text-4xl leading-[0.95] text-ink sm:text-5xl">
+              <span className="kicker">The problem</span>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
                 Every agent online looks the same.
               </h2>
             </Reveal>
@@ -175,11 +212,11 @@ export default function HomePage() {
       </section>
 
       {/* ===================== HOW IT WORKS ===================== */}
-      <section className="border-b-2 border-ink bg-paper-2">
+      <section className="border-b border-hair bg-paper-2">
         <div className="wrap py-20 lg:py-28">
           <Reveal>
-            <p className="kicker">How it works</p>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-[0.95] text-ink sm:text-5xl lg:text-6xl">
+            <span className="kicker">How it works</span>
+            <h2 className="mt-5 max-w-2xl text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
               Three moves. We make all three.
             </h2>
           </Reveal>
@@ -187,12 +224,12 @@ export default function HomePage() {
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {steps.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.08}>
-                <div className="slab slab-hover flex h-full flex-col rounded-xl p-7">
+                <div className="slab slab-hover flex h-full flex-col p-8">
                   <div className="flex items-center justify-between">
-                    <span className="grid size-12 place-items-center rounded-lg border-2 border-ink bg-lime">
-                      <s.icon className="size-6 text-ink" aria-hidden />
+                    <span className="grid size-12 place-items-center rounded-2xl bg-brand-tint text-brand-strong">
+                      <s.icon className="size-6" aria-hidden />
                     </span>
-                    <span className="font-display text-4xl font-bold text-ink/15">{s.n}</span>
+                    <span className="font-display text-4xl font-extrabold text-brand/15">{s.n}</span>
                   </div>
                   <h3 className="mt-6 text-2xl text-ink">{s.title}</h3>
                   <p className="mt-3 leading-relaxed text-ink-2">{s.body}</p>
@@ -204,12 +241,12 @@ export default function HomePage() {
       </section>
 
       {/* ===================== DELIVERABLES ===================== */}
-      <section className="border-b-2 border-ink bg-paper">
+      <section className="border-b border-hair bg-paper">
         <div className="wrap py-20 lg:py-28">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
             <Reveal className="lg:col-span-8">
-              <p className="kicker">What you get</p>
-              <h2 className="mt-5 max-w-2xl text-4xl leading-[0.95] text-ink sm:text-5xl lg:text-6xl">
+              <span className="kicker">What you get</span>
+              <h2 className="mt-5 max-w-2xl text-4xl leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
                 A whole marketing team, without hiring one.
               </h2>
             </Reveal>
@@ -221,36 +258,40 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-xl border-2 border-ink bg-ink sm:grid-cols-2 lg:grid-cols-3">
-            {deliverables.map((d) => (
-              <div key={d.title} className="group bg-paper p-8 transition-colors hover:bg-lime">
-                <d.icon className="size-7 text-ink" aria-hidden />
-                <h3 className="mt-5 text-xl text-ink">{d.title}</h3>
-                <p className="mt-2 leading-relaxed text-ink-2 group-hover:text-ink">{d.body}</p>
-              </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {deliverables.map((d, i) => (
+              <Reveal key={d.title} delay={(i % 3) * 0.06}>
+                <div className="slab slab-hover h-full p-8">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-brand-tint text-brand-strong">
+                    <d.icon className="size-6" aria-hidden />
+                  </span>
+                  <h3 className="mt-5 text-xl text-ink">{d.title}</h3>
+                  <p className="mt-2 leading-relaxed text-ink-2">{d.body}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===================== NUMBERS (inversion) ===================== */}
-      <section className="border-b-2 border-ink bg-dark text-paper">
+      <section className="border-b border-hair bg-dark text-white/70">
         <div className="wrap py-20 lg:py-28">
           <Reveal>
-            <p className="kicker text-lime">Why agents trust it</p>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-[0.95] text-paper sm:text-5xl">
+            <span className="kicker bg-white/10 text-brand-tint-2">Why agents trust it</span>
+            <h2 className="mt-5 max-w-2xl text-4xl leading-[1.05] text-white sm:text-5xl">
               Built by someone who has done the reps.
             </h2>
           </Reveal>
           <dl className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {proofPoints.map((p) => (
               <Reveal key={p.label}>
-                <div className="border-t-2 border-lime pt-5">
-                  <dd className="font-display text-6xl font-bold text-paper">
+                <div className="border-t border-white/15 pt-5">
+                  <dd className="font-display text-6xl font-extrabold text-white">
                     {p.value}
-                    <span className="text-lime">{'suffix' in p ? p.suffix : ''}</span>
+                    <span className="text-brand">{'suffix' in p ? p.suffix : ''}</span>
                   </dd>
-                  <dt className="mt-3 leading-snug text-white/60">{p.label}</dt>
+                  <dt className="mt-3 leading-snug text-white/55">{p.label}</dt>
                 </div>
               </Reveal>
             ))}
@@ -259,10 +300,10 @@ export default function HomePage() {
       </section>
 
       {/* ===================== OPERATOR ===================== */}
-      <section className="border-b-2 border-ink bg-paper">
+      <section className="border-b border-hair bg-paper">
         <div className="wrap grid items-center gap-12 py-20 lg:grid-cols-12 lg:py-28">
           <Reveal className="lg:col-span-5">
-            <div className="slab overflow-hidden rounded-xl">
+            <div className="slab overflow-hidden rounded-[1.5rem]">
               <Image
                 src="/images/jody/jody-standing-1200.webp"
                 alt="Jody McNamer"
@@ -275,8 +316,8 @@ export default function HomePage() {
           </Reveal>
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="kicker">Who runs it</p>
-              <h2 className="mt-5 text-4xl leading-[0.95] text-ink sm:text-5xl">
+              <span className="kicker">Who runs it</span>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
                 Jody McNamer — 20+ years, still in the arena.
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-2">
@@ -285,7 +326,22 @@ export default function HomePage() {
                 Done For You Leads is that playbook, run for you — by someone who has actually done
                 the job it is built for.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+                {[
+                  'Built inside a working brokerage',
+                  'Exclusive to you — never shared',
+                  'Positioning first, ads second',
+                  'Straight talk, no lock-in',
+                ].map((point) => (
+                  <li key={point} className="flex items-center gap-3 text-ink">
+                    <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-tint text-brand-strong">
+                      <Check className="size-3.5" aria-hidden />
+                    </span>
+                    <span className="text-[0.95rem]">{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-9 flex flex-wrap gap-4">
                 <Button asChild>
                   <Link href="/about-us">
                     Meet the operator
@@ -306,28 +362,24 @@ export default function HomePage() {
         <div className="wrap grid gap-12 py-20 lg:grid-cols-12 lg:py-28">
           <div className="lg:col-span-4">
             <Reveal>
-              <p className="kicker">Questions</p>
-              <h2 className="mt-5 text-4xl leading-[0.95] text-ink sm:text-5xl">
-                Before you book.
-              </h2>
+              <span className="kicker">Questions</span>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">Before you book.</h2>
             </Reveal>
           </div>
           <div className="lg:col-span-8">
-            <div className="rounded-xl border-2 border-ink bg-paper">
-              {faqs.map((f, i) => (
+            <div className="overflow-hidden rounded-2xl border border-hair bg-paper shadow-soft">
+              {faqs.map((f) => (
                 <details
                   key={f.question}
-                  className="group border-b-2 border-ink last:border-b-0 [&_summary::-webkit-details-marker]:hidden"
+                  className="group border-b border-hair last:border-b-0 [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 transition-colors hover:bg-brand-tint/50">
                     <span className="font-display text-lg font-semibold text-ink">{f.question}</span>
-                    <Plus
-                      className="size-5 shrink-0 text-ink transition-transform duration-300 group-open:rotate-45"
-                      aria-hidden
-                    />
+                    <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-tint text-brand-strong transition-transform duration-300 group-open:rotate-45">
+                      <Plus className="size-4" aria-hidden />
+                    </span>
                   </summary>
                   <div className="px-6 pb-6 leading-relaxed text-ink-2">{f.answer}</div>
-                  <span className="sr-only">{i}</span>
                 </details>
               ))}
             </div>

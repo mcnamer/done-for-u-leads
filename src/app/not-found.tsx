@@ -4,7 +4,7 @@ import { nav } from '@/content/site';
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-[80vh] items-center border-b-2 border-ink bg-paper">
+    <section className="flex min-h-[80vh] items-center border-b border-hair bg-paper">
       <div className="wrap">
         <p className="kicker">
           <span aria-hidden className="inline-block h-2 w-2 bg-lime" />
@@ -27,14 +27,14 @@ export default function NotFound() {
           </Button>
         </div>
 
-        <ul className="mt-14 flex flex-wrap gap-x-6 gap-y-3 border-t-2 border-ink pt-8">
+        <ul className="mt-14 flex flex-wrap gap-x-6 gap-y-3 border-t border-hair pt-8">
           {nav.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 className="flex items-center gap-2 text-ink-2 transition-colors hover:text-lime-600"
               >
-                <span aria-hidden className="h-3 w-[3px] bg-lime" />
+                <span aria-hidden className="h-3 w-[3px] rounded-full bg-brand" />
                 <span className="font-display text-[0.6875rem] font-semibold tracking-[0.12em] uppercase">
                   {item.label}
                 </span>

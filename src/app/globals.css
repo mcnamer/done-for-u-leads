@@ -1,36 +1,54 @@
 @import 'tailwindcss';
 
 /* ==========================================================================
-   Done For You Leads — editorial design system
-   A deliberately BRIGHT, high-contrast, typographic look: warm paper ground,
-   near-black ink, one electric-lime accent, hard offset shadows and thick
-   rules. Nothing here is shared with the McNamer system (no navy, no glass,
-   no blur, no cinematic dark) — this is its own animal.
+   Done For You Leads — conversion design system
+   A bright, high-trust, real-estate marketing look: clean white and soft
+   violet grounds, one confident violet accent, deep near-black ink, generous
+   whitespace, rounded cards with soft violet-tinted shadows and pill CTAs.
+   Built to convert — nothing shared with McNamer (no navy, no glass) and
+   nothing left of the old editorial-brutalist lime system.
+   Brand violet: #A46BE8.
    ========================================================================== */
 
 @theme {
-  /* Ground + ink */
-  --color-paper: #fbfbf7; /* warm white page */
-  --color-paper-2: #eeeee6; /* bone — alternating band */
-  --color-ink: #0c0e08; /* near-black text + hard borders */
-  --color-ink-2: #55584c; /* muted body text (AA on paper) */
-  --color-hair: #ddddd2; /* hairline dividers */
-  --color-dark: #0c0e08; /* inversion blocks + footer */
+  /* Grounds + ink. Token NAMES are kept from the old system so existing
+     markup keeps resolving; only their VALUES change to the violet scheme. */
+  --color-paper: #ffffff; /* page + card ground */
+  --color-paper-2: #f6f2fc; /* soft violet tint — alternating band */
+  --color-paper-3: #efe8fa; /* deeper tint — insets, hovers */
+  --color-ink: #1a1327; /* near-black, faintly violet — headings */
+  --color-ink-2: #574f63; /* muted body text (AA on white + tint) */
+  --color-hair: #e8e2f3; /* hairline dividers + soft borders */
+  --color-dark: #191129; /* deep violet-black — inversion blocks + footer */
 
-  /* Electric lime — the one accent. Used as a FILL / highlight, not text. */
-  --color-lime: #c6fb50;
-  --color-lime-bright: #d6ff5c;
-  --color-lime-600: #4e7a10; /* deep lime for small accent TEXT on paper */
+  /* Brand violet. `lime`/`lime-600` names are retained as aliases so any
+     untouched utility still renders — but every value is now violet. */
+  --color-lime: #a46be8; /* vivid brand accent (dots, chips, fills) */
+  --color-lime-bright: #b98cef;
+  --color-lime-600: #6d34c6; /* deep violet — accent TEXT + action fills */
 
-  /* Type — a techy grotesk for display paired with a neutral sans. Chosen to
-     be nothing like McNamer's Montserrat/Poppins geometry. */
-  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #a46be8; /* = the brand hex */
+  --color-brand-strong: #6d34c6; /* accessible action colour (white text ✓) */
+  --color-brand-ink: #4b2a86; /* deepest — small accent text on white */
+  --color-brand-tint: #f3ecfc; /* subtle wash */
+  --color-brand-tint-2: #e7d9fa; /* chip / highlight wash */
+
+  /* Type — friendly geometric grotesk for display, neutral sans for body.
+     Nothing like McNamer's Montserrat/Poppins or the old Space Grotesk. */
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Editorial hard shadow — flat, offset, NO blur (the anti-glass). */
-  --shadow-hard: 5px 5px 0 0 var(--color-ink);
-  --shadow-hard-sm: 3px 3px 0 0 var(--color-ink);
+  /* Soft, violet-tinted elevation. Old `--shadow-hard*` names are kept but now
+     resolve to soft shadows so any leftover utility is harmless. */
+  --shadow-soft-sm: 0 6px 16px -10px rgba(75, 42, 134, 0.28);
+  --shadow-soft: 0 18px 40px -20px rgba(75, 42, 134, 0.32);
+  --shadow-soft-lg: 0 34px 70px -28px rgba(75, 42, 134, 0.38);
+  --shadow-hard: var(--shadow-soft);
+  --shadow-hard-sm: var(--shadow-soft-sm);
 
+  --radius-card: 1.25rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1);
 }
 
@@ -39,10 +57,6 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--color-hair);
-  }
-
   html {
     background-color: var(--color-paper);
     scroll-behavior: smooth;
@@ -63,9 +77,9 @@
   h4 {
     font-family: var(--font-display);
     color: var(--color-ink);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
     text-wrap: balance;
   }
 
@@ -74,13 +88,14 @@
   }
 
   ::selection {
-    background: var(--color-lime);
+    background: var(--color-brand-tint-2);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-ink);
+    outline: 3px solid var(--color-brand-strong);
     outline-offset: 2px;
+    border-radius: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -98,11 +113,11 @@
 }
 
 @layer utilities {
-  /* Page gutter. Wide, editorial. */
+  /* Page gutter. */
   .wrap {
     margin-inline: auto;
     width: 100%;
-    max-width: 82rem;
+    max-width: 80rem;
     padding-inline: 1.25rem;
   }
   @media (min-width: 640px) {
@@ -116,55 +131,61 @@
     }
   }
 
-  /* Uppercase tracked label — the eyebrow. Color set at zero specificity so a
-     text-* utility (e.g. text-lime on dark bands) always wins. */
+  /* Eyebrow — a soft violet pill label. */
   .kicker {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    background: var(--color-brand-tint);
     font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
   :where(.kicker) {
-    color: var(--color-ink);
+    color: var(--color-brand-ink);
   }
 
-  /* Inline lime highlight behind a phrase, like a marker swipe. */
+  /* Inline highlight — a soft violet marker swipe under a phrase, deep-violet
+     text. Modern and clean, not a solid block. */
   .mark {
-    background: var(--color-lime);
+    background-image: linear-gradient(transparent 58%, var(--color-brand-tint-2) 0);
+    color: var(--color-brand-ink);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-    padding: 0.05em 0.18em;
+    padding: 0 0.06em;
+    font-weight: inherit;
   }
 
-  /* Editorial card: thick ink border + hard offset shadow, no blur. */
+  /* Soft card: white, hairline border, soft violet-tinted shadow, rounded. */
   .slab {
     background: var(--color-paper);
-    border: 2px solid var(--color-ink);
-    box-shadow: var(--shadow-hard);
+    border: 1px solid var(--color-hair);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
     transition:
-      transform 0.25s var(--ease-snap),
-      box-shadow 0.25s var(--ease-snap);
+      transform 0.35s var(--ease-out),
+      box-shadow 0.35s var(--ease-out);
   }
   @media (hover: hover) {
     .slab-hover:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 7px 7px 0 0 var(--color-ink);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft-lg);
     }
   }
 
   .rule {
-    border-top: 2px solid var(--color-ink);
+    border-top: 1px solid var(--color-hair);
   }
 
-  /* Marquee ticker. */
+  /* Marquee ticker — kept for the trust bar. */
   .marquee {
     display: flex;
     width: max-content;
-    animation: marquee 28s linear infinite;
+    animation: marquee 34s linear infinite;
   }
   @media (prefers-reduced-motion: reduce) {
     .marquee {

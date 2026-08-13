@@ -65,7 +65,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {/* Hero */}
-      <header className="border-b-2 border-ink bg-paper pt-12 sm:pt-16">
+      <header className="border-b border-hair bg-paper pt-12 sm:pt-16">
         <div className="wrap">
           <nav aria-label="Breadcrumb" className="mb-8">
             <Link
@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 alt=""
                 width={36}
                 height={36}
-                className="size-9 rounded-full border-2 border-ink"
+                className="size-9 rounded-full border border-hair"
               />
               <span className="text-sm">
                 <span className="block font-display font-semibold text-ink">{post.author}</span>
@@ -112,7 +112,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </div>
 
         <div className="wrap mt-12">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-xl border-2 border-b-0 border-ink">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-hair shadow-soft">
             <Image
               src={post.image}
               alt={post.imageAlt}
@@ -173,7 +173,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     <ul className="mt-5 space-y-3.5">
                       {post.takeaways.map((t) => (
                         <li key={t} className="flex gap-3 text-sm leading-relaxed text-ink">
-                          <span aria-hidden className="mt-1.5 size-2 shrink-0 bg-lime" />
+                          <span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />
                           {t}
                         </li>
                       ))}
@@ -181,7 +181,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </div>
                 )}
 
-                <div className="mt-6 rounded-xl border-2 border-ink bg-lime p-7">
+                <div className="mt-6 rounded-2xl bg-brand-tint-2 p-7">
                   <h3 className="text-lg text-ink">Have a question for Jody?</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">
                     The answer is free and so is the call.
@@ -199,7 +199,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
           {/* Related */}
           {related.length > 0 && (
-            <div className="mx-auto mt-20 max-w-6xl border-t-2 border-ink pt-14">
+            <div className="mx-auto mt-20 max-w-6xl border-t border-hair pt-14">
               <h2 className="text-2xl text-ink">Keep reading</h2>
               <ul className="mt-8 grid gap-6 md:grid-cols-3">
                 {related.map((r) => (
@@ -208,7 +208,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                       href={`/blogs/${r.slug}`}
                       className="slab slab-hover group relative flex h-full flex-col overflow-hidden rounded-xl"
                     >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b-2 border-ink">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-hair">
                         <Image
                           src={r.image}
                           alt={r.imageAlt}

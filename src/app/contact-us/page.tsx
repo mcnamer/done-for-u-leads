@@ -99,14 +99,14 @@ export default function ContactPage() {
                   ))}
                 </dl>
 
-                <div className="mt-8 border-t-2 border-ink pt-8">
+                <div className="mt-8 border-t border-hair pt-8">
                   <p className="font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-2 uppercase">
                     Serving
                   </p>
                   <p className="mt-2 leading-relaxed text-ink">{contact.serviceArea.join(' · ')}</p>
                 </div>
 
-                <div className="mt-8 border-t-2 border-ink pt-8">
+                <div className="mt-8 border-t border-hair pt-8">
                   <p className="font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink-2 uppercase">
                     Elsewhere
                   </p>
@@ -129,7 +129,7 @@ export default function ContactPage() {
 
               <Link
                 href="/book"
-                className="mt-6 flex items-center justify-between gap-4 rounded-xl border-2 border-ink bg-lime p-6 transition-transform hover:-translate-y-0.5"
+                className="mt-6 flex items-center justify-between gap-4 rounded-2xl bg-brand-tint p-6 transition-colors hover:bg-brand-tint-2"
               >
                 <span>
                   <span className="font-display block font-bold text-ink">Skip the form</span>

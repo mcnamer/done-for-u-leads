@@ -79,7 +79,7 @@ export default function BlogsPage() {
                       href={`/blogs/${post.slug}`}
                       className="slab slab-hover group relative flex h-full flex-col overflow-hidden rounded-xl"
                     >
-                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b-2 border-ink">
+                      <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-hair">
                         <Image
                           src={post.image}
                           alt={post.imageAlt}
@@ -88,7 +88,7 @@ export default function BlogsPage() {
                           style={{ objectPosition: post.imagePos ?? 'center' }}
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <span className="absolute top-4 left-4 rounded border-2 border-ink bg-lime px-2.5 py-1 font-display text-[0.625rem] font-bold tracking-[0.12em] text-ink uppercase">
+                        <span className="absolute top-4 left-4 rounded-full bg-brand-strong px-2.5 py-1 font-display text-[0.625rem] font-bold tracking-[0.08em] text-white uppercase">
                           {post.tag}
                         </span>
                       </div>
@@ -97,7 +97,7 @@ export default function BlogsPage() {
                         <p className="mt-3 line-clamp-3 flex-1 leading-relaxed text-ink-2">
                           {post.excerpt}
                         </p>
-                        <div className="mt-6 flex items-center justify-between border-t-2 border-ink pt-5">
+                        <div className="mt-6 flex items-center justify-between border-t border-hair pt-5">
                           <p className="font-display text-[0.625rem] font-semibold tracking-[0.12em] text-ink-2 uppercase">
                             <time dateTime={post.date}>
                               {new Date(post.date).toLocaleDateString('en-US', {

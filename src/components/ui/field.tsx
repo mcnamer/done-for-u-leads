@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 
 const base =
-  'w-full rounded-lg border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink-2/60 transition-shadow focus:outline-none focus:shadow-[3px_3px_0_0_var(--color-lime)] aria-[invalid=true]:border-red-600';
+  'w-full rounded-xl border border-hair bg-paper px-4 py-3 text-ink placeholder:text-ink-2/60 transition-all focus:outline-none focus:border-brand-strong focus:ring-4 focus:ring-brand-strong/15 aria-[invalid=true]:border-red-500 aria-[invalid=true]:focus:ring-red-500/15';
 
 export const Input = React.forwardRef<
   HTMLInputElement,
@@ -30,7 +30,7 @@ export function FieldLabel({ htmlFor, children }: { htmlFor: string; children: R
   return (
     <label
       htmlFor={htmlFor}
-      className="mb-2 block font-display text-[0.6875rem] font-semibold tracking-[0.16em] text-ink uppercase"
+      className="mb-2 block font-display text-[0.8125rem] font-semibold text-ink"
     >
       {children}
     </label>

@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Editorial section wrapper. Three tones on the paper/bone/ink scale, thick
- * ink rule between bands. No glow, no grain, no glass — flat and confident.
+ * Section wrapper. Three grounds on the white / soft-violet / deep-violet
+ * scale, joined by hairline rules. Clean and airy — the conversion look.
  */
 export function Section({
   id,
@@ -27,7 +27,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn('py-20 lg:py-28', tones[tone], bordered && 'border-b-2 border-ink', className)}
+      className={cn('py-20 lg:py-28', tones[tone], bordered && 'border-b border-hair', className)}
     >
       {children}
     </section>
@@ -36,8 +36,16 @@ export function Section({
 
 export function Eyebrow({ children, dark }: { children: ReactNode; dark?: boolean }) {
   return (
-    <span className={cn('kicker', dark && 'text-lime')}>
-      <span aria-hidden className="inline-block h-2 w-2 bg-lime" />
+    <span
+      className={cn(
+        'kicker',
+        dark && 'bg-white/10 text-brand-tint-2',
+      )}
+    >
+      <span
+        aria-hidden
+        className={cn('inline-block size-1.5 rounded-full', dark ? 'bg-brand-tint-2' : 'bg-brand')}
+      />
       {children}
     </span>
   );

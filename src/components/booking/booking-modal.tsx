@@ -78,7 +78,7 @@ export function BookingModal() {
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close"
-                  className="absolute -top-3 -right-3 z-20 grid size-10 place-items-center rounded-full border-2 border-ink bg-paper text-ink transition-colors hover:bg-lime"
+                  className="absolute -top-3 -right-3 z-20 grid size-10 place-items-center rounded-full border border-hair bg-paper text-ink transition-colors hover:bg-brand-tint"
                 >
                   <X className="size-5" />
                 </button>

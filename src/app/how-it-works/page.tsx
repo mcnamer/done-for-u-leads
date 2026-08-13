@@ -120,9 +120,9 @@ export default function HowItWorksPage() {
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-px overflow-hidden rounded-xl border-2 border-ink bg-ink md:grid-cols-2">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-hair bg-hair md:grid-cols-2">
             {included.map((item) => (
-              <article key={item.name} className="group bg-paper p-8 transition-colors hover:bg-lime">
+              <article key={item.name} className="group bg-paper p-8 transition-colors hover:bg-brand-tint">
                 <IconChip icon={item.icon} />
                 <h3 className="mt-5 text-xl text-ink">{item.name}</h3>
                 <p className="mt-3 leading-relaxed text-ink-2 group-hover:text-ink">{item.body}</p>

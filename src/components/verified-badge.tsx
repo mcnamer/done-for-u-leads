@@ -15,7 +15,7 @@ export function VerifiedBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded border-2 border-ink bg-lime font-display font-semibold text-ink',
+        'inline-flex items-center gap-1.5 rounded-full bg-brand-tint font-display font-semibold text-brand-ink',
         size === 'sm' ? 'px-2.5 py-1 text-[0.6875rem]' : 'px-3.5 py-1.5 text-sm',
         className,
       )}

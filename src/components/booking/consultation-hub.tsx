@@ -25,7 +25,7 @@ export function ConsultationHub() {
 
   return (
     <div className="slab overflow-hidden rounded-xl bg-paper">
-      <div aria-hidden className="h-2 bg-lime" />
+      <div aria-hidden className="h-1.5 bg-brand-strong" />
 
       <div className="p-7 sm:p-10">
         <AnimatePresence mode="wait">
@@ -42,9 +42,9 @@ export function ConsultationHub() {
                     <button
                       type="button"
                       onClick={() => setTrack(t)}
-                      className="group flex w-full items-center gap-4 rounded-lg border-2 border-ink bg-paper p-5 text-left transition-all duration-200 hover:bg-lime sm:p-6"
+                      className="group flex w-full items-center gap-4 rounded-xl border border-hair bg-paper p-5 text-left transition-all duration-200 hover:bg-brand-tint sm:p-6"
                     >
-                      <span aria-hidden className="h-10 w-[3px] shrink-0 bg-ink" />
+                      <span aria-hidden className="h-10 w-[3px] shrink-0 rounded-full bg-brand" />
                       <span className="flex-1">
                         <span className="block font-display text-lg font-semibold text-ink">
                           {t.question}
@@ -63,7 +63,7 @@ export function ConsultationHub() {
                 ))}
               </ul>
 
-              <div className="mt-8 border-t-2 border-ink pt-8">
+              <div className="mt-8 border-t border-hair pt-8">
                 <p className="text-sm text-ink-2">Not sure yet? Take the short way round.</p>
                 <a
                   href={quickCall.url}
@@ -99,7 +99,7 @@ export function ConsultationHub() {
                       href={c.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group block rounded-lg border-2 border-ink border-l-[6px] bg-paper p-5 transition-colors duration-200 hover:bg-lime sm:p-6"
+                      className="group block rounded-xl border border-hair border-l-[5px] border-l-brand bg-paper p-5 transition-colors duration-200 hover:bg-brand-tint sm:p-6"
                     >
                       <span className="flex items-start justify-between gap-4">
                         <span className="flex-1">
@@ -124,7 +124,7 @@ export function ConsultationHub() {
                 ))}
               </ul>
 
-              <p className="mt-8 border-t-2 border-ink pt-8 text-sm text-ink-2">
+              <p className="mt-8 border-t border-hair pt-8 text-sm text-ink-2">
                 Choosing a conversation opens Jody&rsquo;s live calendar in Motion. Pick a time that
                 suits you — you&rsquo;ll get a confirmation straight away.
               </p>
