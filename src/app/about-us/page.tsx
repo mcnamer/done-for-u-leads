@@ -6,6 +6,7 @@ import { Eyebrow, Section } from '@/components/section';
 import { CtaBand } from '@/components/sections/cta-band';
 import { buildMetadata } from '@/lib/seo';
 import { breadcrumbSchema, graph } from '@/lib/schema';
+import { team } from '@/content/team';
 
 export const metadata: Metadata = buildMetadata({
   title: 'About — the operator behind Done For You Leads',
@@ -176,6 +177,40 @@ export default function AboutPage() {
                 judgment of someone who has stood out in this business for twenty years.
               </p>
             </Reveal>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="bone">
+        <div className="wrap">
+          <Reveal>
+            <Eyebrow>The team</Eyebrow>
+            <h2 className="mt-5 max-w-2xl text-4xl leading-[1.05] text-ink sm:text-5xl">
+              The people behind your campaigns
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m, i) => (
+              <Reveal key={m.name} delay={(i % 4) * 0.05}>
+                <div className="slab h-full p-7 text-center">
+                  {m.image ? (
+                    <Image
+                      src={m.image}
+                      alt={m.name}
+                      width={160}
+                      height={160}
+                      className="mx-auto size-20 rounded-full object-cover object-top"
+                    />
+                  ) : (
+                    <span className="mx-auto grid size-20 place-items-center rounded-full bg-brand-tint font-display text-2xl font-extrabold text-brand-strong">
+                      {m.initials}
+                    </span>
+                  )}
+                  <h3 className="mt-5 text-lg text-ink">{m.name}</h3>
+                  <p className="mt-1 text-sm leading-snug text-ink-2">{m.role}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </Section>

@@ -93,9 +93,19 @@ export default function BookPage() {
                 ))}
               </dl>
 
-              <p className="mt-8 border-t border-hair pt-8 text-sm leading-relaxed text-ink-2">
+              <div className="mt-8 rounded-2xl bg-brand-tint p-6">
+                <p className="font-display font-semibold text-ink">Is this a fit?</p>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">
+                  If you’re currently investing at least{' '}
+                  <span className="font-semibold text-ink">$2,500/month</span> in advertising — or
+                  you’re ready to — we should talk. We’ll learn a bit about you, tell you briefly
+                  about us, and decide together how to proceed.
+                </p>
+              </div>
+
+              <p className="mt-6 border-t border-hair pt-6 text-sm leading-relaxed text-ink-2">
                 Prefer the phone?{' '}
-                <a href={contact.phoneHref} className="font-semibold text-lime-600">
+                <a href={contact.phoneHref} className="font-semibold text-brand-strong">
                   {contact.phone}
                 </a>{' '}
                 — {contact.hours}.

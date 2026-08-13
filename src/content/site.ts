@@ -7,9 +7,9 @@ export const site = {
   name: 'Done For You Leads',
   person: 'Jody McNamer',
   role: 'Real estate lead generation',
-  tagline: 'Stand out, get found, fill your calendar.',
+  tagline: 'A simple way for agents to close more leads — and build a business they love.',
   description:
-    'Done For You Leads finds what makes you different, then puts it in front of the exact people looking for it — proprietary targeting, micro-audiences and individualized messaging that turn strangers into a steady stream of high-quality real estate leads.',
+    'Done For You Leads finds what makes you different, then puts it in front of the exact people looking for it — proprietary targeting, micro-audiences and individualized messaging that turn strangers into meaningful conversations with buyers and sellers. Not a one-size-fits-all lead vendor: every campaign is customized and optimized for the individual agent.',
   locale: 'en_US',
 } as const;
 
@@ -35,6 +35,7 @@ export const socials = [
 /** Primary navigation. */
 export const nav = [
   { label: 'How it works', href: '/how-it-works' },
+  { label: 'Services', href: '/services' },
   { label: 'About', href: '/about-us' },
   { label: 'Insights', href: '/blogs' },
   { label: 'Contact', href: '/contact-us' },
@@ -52,8 +53,8 @@ export const primaryCta = {
 } as const;
 
 export const proofPoints = [
+  { value: '6', suffix: '%', label: 'Average lead call-to-close ratio' },
   { value: '20', suffix: '+', label: 'Years marketing real estate' },
-  { value: '1000', suffix: 's', label: 'Agents trained nationwide' },
-  { value: '1:1', suffix: '', label: 'Messaging tuned to each agent' },
+  { value: '10', suffix: '+', label: 'Years generating agent leads' },
   { value: '100', suffix: '%', label: 'Done for you, start to finish' },
 ] as const;
