@@ -33,20 +33,19 @@ export const socials = [
 ] as const;
 
 /** Primary navigation. */
-/** Main nav — split two-left / two-right around the centered logo. */
+/** Main nav — four links left, three right around the centered logo. */
 export const nav = [
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about-us' },
-  { label: 'Insights', href: '/blogs' },
-] as const;
-
-/** Secondary links shown in the top utility bar (and the mobile sheet). */
-export const utilityNav = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'FAQ', href: '/faq' },
+  { label: 'About', href: '/about-us' },
+  { label: 'Insights', href: '/blogs' },
   { label: 'Contact', href: '/contact-us' },
 ] as const;
+
+/** How many nav links sit to the left of the centered logo. */
+export const navSplit = 4;
 
 export const legalNav = [
   { label: 'Privacy policy', href: '/privacy-policies' },

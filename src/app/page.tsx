@@ -159,7 +159,9 @@ export default function HomePage() {
         <div className="wrap relative py-24 text-center lg:py-32">
           <div className="mx-auto max-w-4xl">
             <Reveal>
-              <span className="kicker bg-white/15 text-white">Real estate lead generation</span>
+              <span className="kicker bg-white text-brand-strong shadow-soft-sm">
+                Real estate lead generation
+              </span>
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="mx-auto mt-6 max-w-4xl text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-white">

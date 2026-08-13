@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, Phone, Mail, Linkedin, Youtube, Facebook, Instagram } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { contact, legalNav, nav, utilityNav, site, socials } from '@/content/site';
+import { contact, legalNav, nav, site, socials } from '@/content/site';
 import { Button } from '@/components/ui/button';
 
 const socialIcons: Record<string, LucideIcon> = {
@@ -102,7 +102,7 @@ export function SiteFooter() {
             Explore
           </h2>
           <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3">
-            {[...nav, ...utilityNav].map((item) => (
+            {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

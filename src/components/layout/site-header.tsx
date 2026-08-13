@@ -15,7 +15,7 @@ import {
   Instagram,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { nav, utilityNav, primaryCta, site, contact, socials } from '@/content/site';
+import { nav, navSplit, primaryCta, site, contact, socials } from '@/content/site';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -26,8 +26,8 @@ const socialIcons: Record<string, LucideIcon> = {
   Instagram: Instagram,
 };
 
-const leftNav = nav.slice(0, 2);
-const rightNav = nav.slice(2, 4);
+const leftNav = nav.slice(0, navSplit);
+const rightNav = nav.slice(navSplit);
 
 function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
@@ -95,12 +95,8 @@ export function SiteHeader() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            {utilityNav.map((item) => (
-              <Link key={item.href} href={item.href} className="transition-colors hover:text-white">
-                {item.label}
-              </Link>
-            ))}
-            <span aria-hidden className="h-3.5 w-px bg-white/20" />
+            <span className="hidden xl:inline">Serving agents across the US &amp; Canada</span>
+            <span aria-hidden className="hidden h-3.5 w-px bg-white/20 xl:block" />
             <ul className="flex items-center gap-3">
               {socials.map((s) => {
                 const Icon = socialIcons[s.label];
@@ -132,7 +128,7 @@ export function SiteHeader() {
       >
         <div className="wrap flex h-16 items-center justify-between gap-4 lg:grid lg:h-20 lg:grid-cols-[1fr_auto_1fr]">
           {/* Left nav (desktop) */}
-          <nav aria-label="Primary left" className="hidden items-center gap-8 lg:flex">
+          <nav aria-label="Primary left" className="hidden items-center gap-x-5 lg:flex xl:gap-x-7">
             {leftNav.map((item) => (
               <NavLink key={item.href} {...item} active={pathname === item.href} />
             ))}
@@ -143,7 +139,7 @@ export function SiteHeader() {
 
           {/* Right nav + CTA (desktop) / hamburger (mobile) */}
           <div className="flex items-center justify-end gap-6">
-            <nav aria-label="Primary right" className="hidden items-center gap-8 lg:flex">
+            <nav aria-label="Primary right" className="hidden items-center gap-x-5 lg:flex xl:gap-x-7">
               {rightNav.map((item) => (
                 <NavLink key={item.href} {...item} active={pathname === item.href} />
               ))}
@@ -171,7 +167,7 @@ export function SiteHeader() {
       {/* Mobile sheet */}
       <div id="mobile-nav" hidden={!open} className="border-b border-hair bg-paper lg:hidden">
         <nav aria-label="Primary (mobile)" className="wrap flex flex-col py-4">
-          {[...nav, ...utilityNav].map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
