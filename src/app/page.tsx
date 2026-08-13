@@ -17,6 +17,7 @@ import {
 import { Reveal } from '@/components/reveal';
 import { VideoEmbed } from '@/components/video-embed';
 import { HeroSlider } from '@/components/hero-slider';
+import { HeroWidget } from '@/components/hero-widget';
 import { Button } from '@/components/ui/button';
 import { proofPoints } from '@/content/site';
 import { faqs } from '@/content/faqs';
@@ -95,12 +96,12 @@ export default function HomePage() {
             { src: '/images/slider/slide-3.avif', alt: '' },
           ]}
         />
-        {/* Legibility overlays */}
+        {/* Legibility overlay — left-weighted so the photos stay visible on the right */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-[#0f1c2b]/95 via-[#0f1c2b]/80 to-[#0f1c2b]/45"
+          className="absolute inset-0 bg-gradient-to-r from-[#0f1c2b]/88 via-[#0f1c2b]/50 to-[#0f1c2b]/15"
         />
-        <div aria-hidden className="absolute inset-0 bg-[#0f1c2b]/25" />
+        <div aria-hidden className="absolute inset-0 bg-[#0f1c2b]/10" />
 
         <div className="wrap relative grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-10 lg:py-28">
           <div className="lg:col-span-7">
@@ -154,17 +155,7 @@ export default function HomePage() {
 
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="rounded-[1.5rem] border border-white/50 bg-white/95 p-5 shadow-soft-lg backdrop-blur-sm sm:p-7">
-                <Image
-                  src="/images/hero-vector.webp"
-                  alt="Two people searching for the right home online"
-                  width={1520}
-                  height={850}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 30rem"
-                  className="h-auto w-full"
-                />
-              </div>
+              <HeroWidget />
             </Reveal>
           </div>
         </div>
@@ -332,39 +323,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===================== OPERATOR ===================== */}
+      {/* ===================== THE PROGRAM ===================== */}
       <section className="border-b border-hair bg-paper">
         <div className="wrap grid items-center gap-12 py-20 lg:grid-cols-12 lg:py-28">
           <Reveal className="lg:col-span-5">
-            <div className="slab overflow-hidden rounded-[1.5rem]">
+            <div className="rounded-[1.5rem] bg-brand-tint p-6 sm:p-8">
               <Image
-                src="/images/jody/jody-standing-1200.webp"
-                alt="Jody McNamer"
-                width={1200}
-                height={1500}
-                sizes="(max-width: 1024px) 100vw, 30rem"
-                className="aspect-[4/5] w-full object-cover"
+                src="/images/hero-vector.webp"
+                alt="Two people searching for the right home online"
+                width={1520}
+                height={850}
+                sizes="(max-width: 1024px) 100vw, 28rem"
+                className="h-auto w-full"
               />
             </div>
           </Reveal>
           <div className="lg:col-span-7">
             <Reveal>
-              <span className="kicker">Who runs it</span>
+              <span className="kicker">The program</span>
               <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
-                Jody McNamer — 20+ years, still in the arena.
+                Everything the Done For You Leads program covers.
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-2">
-                Founder of the McNamer group of companies and a nationally ranked real-estate
-                trainer, Jody has spent two decades teaching agents how to stand out and get found.
-                Done For You Leads is that playbook, run for you — by someone who has actually done
-                the job it is built for.
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">
+                It is an end-to-end, done-for-you system built on your unique selling proposition —
+                not a one-size-fits-all lead vendor. Innovative direct-response advertising across
+                every social channel, integrated brand marketing, and messaging tuned to each
+                audience. Every campaign is customized, optimized, and{' '}
+                <span className="mark">exclusive to you</span>.
               </p>
-              <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              <ul className="mt-8 grid gap-x-6 gap-y-3 sm:grid-cols-2">
                 {[
-                  'Built inside a working brokerage',
-                  'Exclusive to you — never shared',
-                  'Positioning first, ads second',
-                  'Straight talk, no lock-in',
+                  'Your USP, defined',
+                  'Ad creative + landing pages',
+                  'Micro-audience targeting',
+                  'Individualized messaging',
+                  'Automated follow-up',
+                  'Plain-English reporting',
+                  'Coaching from creation to close',
+                  'Lead tracking & nurturing',
+                  'Integrated social media',
+                  'CRM consulting',
                 ].map((point) => (
                   <li key={point} className="flex items-center gap-3 text-ink">
                     <span className="grid size-6 shrink-0 place-items-center rounded-full bg-brand-tint text-brand-strong">
@@ -374,10 +372,28 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-9 flex flex-wrap gap-4">
+
+              <div className="mt-8 flex items-center gap-3 rounded-2xl border border-hair bg-paper-2 p-4">
+                <Image
+                  src="/logo/jm-mark-256.png"
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="size-11 rounded-full"
+                />
+                <p className="text-sm leading-snug text-ink-2">
+                  Built and run by <span className="font-semibold text-ink">Jody McNamer</span> —
+                  20+ years marketing real estate.{' '}
+                  <Link href="/about-us" className="font-semibold text-brand-strong hover:underline">
+                    Meet the operator →
+                  </Link>
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
                 <Button asChild>
-                  <Link href="/about-us">
-                    Meet the operator
+                  <Link href="/services">
+                    See all services
                     <ArrowUpRight aria-hidden />
                   </Link>
                 </Button>
