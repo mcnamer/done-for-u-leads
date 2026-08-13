@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
-import { contact, legalNav, nav, site, socials } from '@/content/site';
+import { contact, legalNav, nav, utilityNav, site, socials } from '@/content/site';
 import { Button } from '@/components/ui/button';
 
 export function SiteFooter() {
@@ -63,7 +63,7 @@ export function SiteFooter() {
             Site
           </h2>
           <ul className="mt-5 space-y-3">
-            {nav.map((item) => (
+            {[...nav, ...utilityNav].map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

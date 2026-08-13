@@ -67,76 +67,79 @@ export default function AboutPage() {
       />
 
       <Section>
-        <div className="wrap grid gap-16 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <Eyebrow>The short version</Eyebrow>
-              <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink-2">
-                <p>
-                  Jody McNamer has spent 20+ years marketing real estate and is the founder of the
-                  McNamer group of companies. As a nationally ranked trainer, he has taught thousands
-                  of agents one thing above all: stop looking like everyone else.
-                </p>
-                <p>
-                  That’s where Done For You Leads came from. In coaching session after session, the
-                  same problem showed up — great agents with no clear reason for a client to pick
-                  them, buying the same shared leads as their competition.
-                </p>
-                <p>
-                  So he built a system that starts with{' '}
-                  <span className="mark text-ink">what makes you different</span>, then puts that
-                  difference in front of the exact people looking for it.
-                </p>
-                <p className="font-semibold text-ink">
-                  Done For You Leads is that system, run for you. You keep doing what you do best.
-                  Standing out is our job.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-5">
-            <Reveal delay={0.1}>
-              <div className="slab overflow-hidden rounded-xl">
+        <div className="wrap text-center">
+          <Reveal>
+            <Eyebrow>The short version</Eyebrow>
+            <div className="mx-auto mt-8 max-w-3xl space-y-6 text-lg leading-relaxed text-ink-2">
+              <p>
+                Jody McNamer has spent 20+ years marketing real estate and is the founder of the
+                McNamer group of companies. As a nationally ranked trainer, he has taught thousands
+                of agents one thing above all: stop looking like everyone else.
+              </p>
+              <p>
+                That’s where Done For You Leads came from. In coaching session after session, the
+                same problem showed up — great agents with no clear reason for a client to pick them,
+                buying the same shared leads as their competition.
+              </p>
+              <p>
+                So he built a system that starts with{' '}
+                <span className="mark">what makes you different</span>, then puts that difference in
+                front of the exact people looking for it.
+              </p>
+              <p className="font-semibold text-ink">
+                Done For You Leads is that system, run for you. You keep doing what you do best.
+                Standing out is our job.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
+              <div className="slab overflow-hidden rounded-[1.25rem]">
                 <Image
                   src="/images/jody/jody-about-1200.webp"
                   alt="Jody McNamer"
                   width={1200}
-                  height={1841}
-                  sizes="(max-width: 1024px) 100vw, 26rem"
+                  height={1500}
+                  sizes="(max-width: 640px) 100vw, 24rem"
                   className="aspect-[4/5] w-full object-cover"
                 />
               </div>
-            </Reveal>
-          </div>
+              <div className="slab overflow-hidden rounded-[1.25rem]">
+                <Image
+                  src="/images/jody/jody-media-1200.webp"
+                  alt="Jody McNamer on camera"
+                  width={1200}
+                  height={1500}
+                  sizes="(max-width: 640px) 100vw, 24rem"
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
+              </div>
+            </div>
+          </Reveal>
         </div>
       </Section>
 
       <Section tone="bone">
         <div className="wrap">
-          <Reveal>
-            <Eyebrow>The long version</Eyebrow>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-[0.95] text-ink sm:text-5xl lg:text-6xl">
-              How a lead engine came out of a real career
-            </h2>
-          </Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <Eyebrow>The long version</Eyebrow>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
+                How a lead engine came out of a real career
+              </h2>
+            </Reveal>
+          </div>
 
-          <ol className="mt-14 border-t border-hair">
+          <ol className="mx-auto mt-12 max-w-2xl space-y-4">
             {chapters.map((chapter, i) => (
               <li key={chapter.title}>
                 <Reveal delay={i * 0.05}>
-                  <article className="grid gap-4 border-b border-hair py-8 lg:grid-cols-12 lg:gap-8">
-                    <div className="lg:col-span-2">
-                      <span className="font-display text-sm font-bold tracking-[0.06em] text-lime-600 uppercase">
-                        {chapter.year}
-                      </span>
-                    </div>
-                    <div className="lg:col-span-3">
-                      <h3 className="text-2xl text-ink">{chapter.title}</h3>
-                    </div>
-                    <div className="lg:col-span-7">
-                      <p className="leading-relaxed text-ink-2">{chapter.body}</p>
-                    </div>
+                  <article className="slab p-6 sm:p-7">
+                    <span className="font-display text-xs font-bold tracking-[0.12em] text-brand-strong uppercase">
+                      {chapter.year}
+                    </span>
+                    <h3 className="mt-2 text-2xl text-ink">{chapter.title}</h3>
+                    <p className="mt-2 leading-relaxed text-ink-2">{chapter.body}</p>
                   </article>
                 </Reveal>
               </li>
@@ -146,50 +149,50 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="wrap grid gap-16 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5">
-            <Reveal>
-              <div className="slab overflow-hidden rounded-xl">
-                <Image
-                  src="/images/jody/jody-media-1200.webp"
-                  alt="Jody McNamer on camera"
-                  width={1200}
-                  height={1200}
-                  sizes="(max-width: 1024px) 100vw, 26rem"
-                  className="aspect-[4/5] w-full object-cover object-top"
-                />
-              </div>
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7">
+        <div className="wrap text-center">
+          <div className="mx-auto max-w-3xl">
             <Reveal>
               <Eyebrow>Why it’s different</Eyebrow>
-              <h2 className="mt-5 text-4xl leading-[0.95] text-ink sm:text-5xl">
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
                 Still in the arena, not just selling from it
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-2">
+              <p className="mt-6 text-lg leading-relaxed text-ink-2">
                 Most lead vendors have never had to make a phone ring for themselves. Jody has spent
                 two decades doing exactly that, and teaching others to do it — so the campaigns are
                 built on what actually converts, and tuned the moment the market shifts.
               </p>
-              <p className="mt-4 max-w-xl leading-relaxed text-ink-2">
+              <p className="mt-4 leading-relaxed text-ink-2">
                 When you hire Done For You Leads, you are not renting software. You are borrowing the
                 judgment of someone who has stood out in this business for twenty years.
               </p>
             </Reveal>
           </div>
+          <Reveal delay={0.1}>
+            <div className="slab mx-auto mt-12 max-w-4xl overflow-hidden rounded-[1.5rem]">
+              <Image
+                src="/images/jody/jody-standing-1200.webp"
+                alt="Jody McNamer"
+                width={1600}
+                height={800}
+                sizes="(max-width: 1024px) 100vw, 56rem"
+                className="aspect-[16/9] w-full object-cover object-top"
+              />
+            </div>
+          </Reveal>
         </div>
       </Section>
 
       <Section tone="bone">
         <div className="wrap">
-          <Reveal>
-            <Eyebrow>The team</Eyebrow>
-            <h2 className="mt-5 max-w-2xl text-4xl leading-[1.05] text-ink sm:text-5xl">
-              The people behind your campaigns
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <Eyebrow>The team</Eyebrow>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
+                The people behind your campaigns
+              </h2>
+            </Reveal>
+          </div>
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((m, i) => (
               <Reveal key={m.name} delay={(i % 4) * 0.05}>
                 <div className="slab h-full p-7 text-center">
