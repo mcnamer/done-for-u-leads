@@ -14,9 +14,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-brand-strong text-white shadow-[0_10px_24px_-10px_rgba(75,42,134,0.55)] hover:-translate-y-0.5 hover:bg-[#5c2ab0] hover:shadow-[0_16px_34px_-12px_rgba(75,42,134,0.6)] active:translate-y-0',
+          'bg-brand-strong text-white shadow-[0_10px_24px_-10px_rgba(30,78,120,0.5)] hover:-translate-y-0.5 hover:bg-[#245a8a] hover:shadow-[0_16px_34px_-12px_rgba(30,78,120,0.55)] active:translate-y-0',
         solid:
-          'bg-ink text-white shadow-[0_10px_24px_-12px_rgba(26,19,39,0.6)] hover:-translate-y-0.5 hover:bg-[#251b3a] active:translate-y-0',
+          'bg-ink text-white shadow-[0_10px_24px_-12px_rgba(20,32,43,0.6)] hover:-translate-y-0.5 hover:bg-[#0f1c2b] active:translate-y-0',
         outline:
           'border border-brand-strong/40 bg-transparent text-brand-strong hover:border-brand-strong hover:bg-brand-tint',
         ghost: 'bg-transparent text-ink hover:bg-brand-tint',

@@ -37,7 +37,7 @@ export const bookingTracks: BookingTrack[] = [
     name: 'For agents',
     question: 'I need a pipeline I can count on.',
     wavelength: 'violet',
-    hex: '#A46BE8',
+    hex: '#6FA1CC',
     consultations: [
       {
         id: 'agent-exploration-leads',

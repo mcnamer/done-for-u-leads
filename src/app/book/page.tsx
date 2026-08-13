@@ -21,19 +21,19 @@ const expectations = [
   {
     title: 'It is a conversation, not a pitch',
     icon: MessageCircle,
-    hue: '#A46BE8',
+    hue: '#2C6CA6',
     body: 'You describe where you are. Jody tells you what he would do. If that is not him, he says so and points you at whoever it is.',
   },
   {
     title: 'It costs nothing',
     icon: BadgeCheck,
-    hue: '#3F8FD1',
+    hue: '#6FA1CC',
     body: 'The first call is free, and there is no version of it that ends with a contract in front of you.',
   },
   {
     title: 'You leave with something',
     icon: Gift,
-    hue: '#6B7BE8',
+    hue: '#1E4E76',
     body: 'Even if you never work together — a number, a next step, or one fewer thing to worry about.',
   },
 ];

@@ -17,7 +17,7 @@ export function CtaBand({
   return (
     <section className="border-b border-hair bg-paper">
       <div className="wrap py-16 lg:py-20">
-        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#6d34c6] via-[#7c3fd6] to-[#a46be8] px-7 py-14 shadow-soft-lg sm:px-12 lg:px-16 lg:py-16">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#1e4e76] via-[#2c6ca6] to-[#6fa1cc] px-7 py-14 shadow-soft-lg sm:px-12 lg:px-16 lg:py-16">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-white/10 blur-2xl"
@@ -31,7 +31,7 @@ export function CtaBand({
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-brand-strong shadow-[0_12px_30px_-12px_rgba(0,0,0,0.5)] hover:bg-white hover:text-[#5c2ab0]"
+                className="bg-white text-brand-strong shadow-[0_12px_30px_-12px_rgba(0,0,0,0.5)] hover:bg-white hover:text-[#1e4e76]"
               >
                 <Link href="/book">
                   Book a strategy call

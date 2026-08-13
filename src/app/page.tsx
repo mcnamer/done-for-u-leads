@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
 import { VideoEmbed } from '@/components/video-embed';
+import { HeroSlider } from '@/components/hero-slider';
 import { Button } from '@/components/ui/button';
 import { proofPoints } from '@/content/site';
 import { faqs } from '@/content/faqs';
@@ -74,7 +75,7 @@ const deliverables = [
 
 function Stars() {
   return (
-    <span className="flex items-center gap-0.5 text-brand-strong" aria-hidden>
+    <span className="flex items-center gap-0.5 text-amber-400" aria-hidden>
       {[0, 1, 2, 3, 4].map((i) => (
         <Star key={i} className="size-4 fill-current" />
       ))}
@@ -86,23 +87,33 @@ export default function HomePage() {
   return (
     <>
       {/* ===================== HERO ===================== */}
-      <section className="relative overflow-hidden border-b border-hair bg-gradient-to-b from-brand-tint via-paper to-paper">
+      <section className="relative isolate overflow-hidden border-b border-hair">
+        <HeroSlider
+          slides={[
+            { src: '/images/slider/slide-keys.png', alt: '' },
+            { src: '/images/slider/slide-leadgen.jpg', alt: '' },
+            { src: '/images/slider/slide-3.avif', alt: '' },
+          ]}
+        />
+        {/* Legibility overlays */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-40 -right-40 size-[34rem] rounded-full bg-brand/10 blur-3xl"
+          className="absolute inset-0 bg-gradient-to-r from-[#0f1c2b]/95 via-[#0f1c2b]/80 to-[#0f1c2b]/45"
         />
-        <div className="wrap relative grid items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-24">
+        <div aria-hidden className="absolute inset-0 bg-[#0f1c2b]/25" />
+
+        <div className="wrap relative grid items-center gap-12 py-20 lg:grid-cols-12 lg:gap-10 lg:py-28">
           <div className="lg:col-span-7">
             <Reveal>
-              <span className="kicker">Real estate lead generation</span>
+              <span className="kicker bg-white/15 text-white">Real estate lead generation</span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-6 text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-ink">
-                Be the <span className="mark">obvious</span> agent to call.
+              <h1 className="mt-6 text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-white">
+                Be the <span className="text-lime-bright">obvious</span> agent to call.
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-2 sm:text-xl">
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl">
                 We find what makes you different, then put it in front of the exact people looking
                 for it — with proprietary targeting, micro-audiences and messaging that sounds like
                 you. All done for you.
@@ -116,7 +127,12 @@ export default function HomePage() {
                     <ArrowUpRight aria-hidden />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg">
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-white/40 text-white hover:border-white hover:bg-white/10"
+                >
                   <Link href="/how-it-works">See how it works</Link>
                 </Button>
               </div>
@@ -125,13 +141,11 @@ export default function HomePage() {
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <span className="flex items-center gap-2">
                   <Stars />
-                  <span className="text-sm font-medium text-ink">
-                    Built by a 20-year operator
-                  </span>
+                  <span className="text-sm font-medium text-white">Built by a 20-year operator</span>
                 </span>
-                <span className="hidden h-4 w-px bg-hair sm:block" />
-                <span className="flex items-center gap-2 text-sm text-ink-2">
-                  <ShieldCheck aria-hidden className="size-4 text-brand-strong" />
+                <span className="hidden h-4 w-px bg-white/25 sm:block" />
+                <span className="flex items-center gap-2 text-sm text-white/80">
+                  <ShieldCheck aria-hidden className="size-4 text-lime-bright" />
                   First call’s free — no contracts
                 </span>
               </div>
@@ -140,27 +154,16 @@ export default function HomePage() {
 
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="relative">
-                <div className="slab overflow-hidden rounded-[1.5rem] p-0">
-                  <Image
-                    src="/images/jody/jody-coaching-1200.webp"
-                    alt="Jody McNamer, founder of Done For You Leads"
-                    width={1200}
-                    height={1200}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 34rem"
-                    className="aspect-[4/5] w-full object-cover object-top"
-                  />
-                </div>
-                {/* Floating stat badge */}
-                <div className="absolute -bottom-5 -left-4 flex items-center gap-3 rounded-2xl border border-hair bg-paper px-5 py-4 shadow-soft sm:-left-6">
-                  <span className="font-display text-3xl font-extrabold text-brand-strong">20+</span>
-                  <span className="text-sm leading-tight text-ink-2">
-                    years marketing
-                    <br />
-                    real estate
-                  </span>
-                </div>
+              <div className="rounded-[1.5rem] border border-white/50 bg-white/95 p-5 shadow-soft-lg backdrop-blur-sm sm:p-7">
+                <Image
+                  src="/images/hero-vector.webp"
+                  alt="Two people searching for the right home online"
+                  width={1520}
+                  height={850}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 30rem"
+                  className="h-auto w-full"
+                />
               </div>
             </Reveal>
           </div>

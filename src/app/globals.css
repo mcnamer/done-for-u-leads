@@ -12,37 +12,36 @@
 
 @theme {
   /* Grounds + ink. Token NAMES are kept from the old system so existing
-     markup keeps resolving; only their VALUES change to the violet scheme. */
+     markup keeps resolving; only their VALUES change to the blue scheme. */
   --color-paper: #ffffff; /* page + card ground */
-  --color-paper-2: #f6f2fc; /* soft violet tint — alternating band */
-  --color-paper-3: #efe8fa; /* deeper tint — insets, hovers */
-  --color-ink: #1a1327; /* near-black, faintly violet — headings */
-  --color-ink-2: #574f63; /* muted body text (AA on white + tint) */
-  --color-hair: #e8e2f3; /* hairline dividers + soft borders */
-  --color-dark: #191129; /* deep violet-black — inversion blocks + footer */
+  --color-paper-2: #eef4f9; /* soft blue tint — alternating band */
+  --color-paper-3: #e2edf5; /* deeper tint — insets, hovers */
+  --color-ink: #14202b; /* near-black, faintly blue — headings */
+  --color-ink-2: #52616f; /* muted blue-gray body text (AA on white + tint) */
+  --color-hair: #e2e9f1; /* hairline dividers + soft borders */
+  --color-dark: #0f1c2b; /* deep blue-black — inversion blocks + footer */
 
-  /* Brand violet. `lime`/`lime-600` names are retained as aliases so any
-     untouched utility still renders — but every value is now violet. */
-  --color-lime: #a46be8; /* vivid brand accent (dots, chips, fills) */
-  --color-lime-bright: #b98cef;
-  --color-lime-600: #6d34c6; /* deep violet — accent TEXT + action fills */
+  /* Brand blue (#6FA1CC). `lime`/`lime-600` names are retained as aliases so
+     any untouched utility still renders — but every value is now blue. */
+  --color-lime: #6fa1cc; /* the brand accent (dots, chips, fills) */
+  --color-lime-bright: #8ab6da;
+  --color-lime-600: #2c6ca6; /* deep blue — accent TEXT + action fills */
 
-  --color-brand: #a46be8; /* = the brand hex */
-  --color-brand-strong: #6d34c6; /* accessible action colour (white text ✓) */
-  --color-brand-ink: #4b2a86; /* deepest — small accent text on white */
-  --color-brand-tint: #f3ecfc; /* subtle wash */
-  --color-brand-tint-2: #e7d9fa; /* chip / highlight wash */
+  --color-brand: #6fa1cc; /* = the brand hex */
+  --color-brand-strong: #2c6ca6; /* accessible action colour (white text ✓) */
+  --color-brand-ink: #1e4e76; /* deepest — small accent text on white */
+  --color-brand-tint: #eaf2f9; /* subtle wash */
+  --color-brand-tint-2: #d5e6f2; /* chip / highlight wash */
 
-  /* Type — friendly geometric grotesk for display, neutral sans for body.
-     Nothing like McNamer's Montserrat/Poppins or the old Space Grotesk. */
+  /* Type — friendly geometric grotesk for display, neutral sans for body. */
   --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Soft, violet-tinted elevation. Old `--shadow-hard*` names are kept but now
+  /* Soft, blue-tinted elevation. Old `--shadow-hard*` names are kept but now
      resolve to soft shadows so any leftover utility is harmless. */
-  --shadow-soft-sm: 0 6px 16px -10px rgba(75, 42, 134, 0.28);
-  --shadow-soft: 0 18px 40px -20px rgba(75, 42, 134, 0.32);
-  --shadow-soft-lg: 0 34px 70px -28px rgba(75, 42, 134, 0.38);
+  --shadow-soft-sm: 0 6px 16px -10px rgba(30, 78, 120, 0.3);
+  --shadow-soft: 0 18px 40px -20px rgba(30, 78, 120, 0.34);
+  --shadow-soft-lg: 0 34px 70px -28px rgba(30, 78, 120, 0.4);
   --shadow-hard: var(--shadow-soft);
   --shadow-hard-sm: var(--shadow-soft-sm);
 
