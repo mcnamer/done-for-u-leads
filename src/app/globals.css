@@ -82,6 +82,16 @@
     text-wrap: balance;
   }
 
+  /* Tabular figures on the display font so stats, prices and metrics stay
+     aligned and never shift width as digits change (number-tabular). */
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-variant-numeric: tabular-nums;
+  }
+
   p {
     text-wrap: pretty;
   }

@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
  * and a quiet outline cover secondary actions.
  */
 const buttonVariants = cva(
-  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full font-display font-semibold transition-all duration-200 ease-[cubic-bezier(0.2,0.9,0.3,1)] disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0',
+  'inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full font-display font-semibold transition-all duration-200 ease-[cubic-bezier(0.2,0.9,0.3,1)] active:scale-[0.98] motion-reduce:transition-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0',
   {
     variants: {
       variant: {
