@@ -17,6 +17,12 @@ import {
 import { Reveal } from '@/components/reveal';
 import { VideoEmbed } from '@/components/video-embed';
 import { HeroSlider } from '@/components/hero-slider';
+import {
+  PipelineWidget,
+  ChannelReachWidget,
+  SpeedToLeadWidget,
+  UspComparisonWidget,
+} from '@/components/widgets';
 import { Button } from '@/components/ui/button';
 import { proofPoints } from '@/content/site';
 import { faqs } from '@/content/faqs';
@@ -324,27 +330,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===================== NUMBERS (centered, inversion) ===================== */}
-      <section className="border-b border-hair bg-dark">
+      {/* ===================== WIDGETS (moving parts) ===================== */}
+      <section className="border-b border-hair bg-paper">
         <div className="wrap py-20 lg:py-28">
           <SectionHead
-            dark
-            eyebrow="Why agents trust it"
-            title="Built by someone who has done the reps."
+            eyebrow="Under the hood"
+            title="The moving parts, working together."
+            intro="Positioning, multi-channel reach and instant follow-up — the pieces that quietly turn strangers into booked appointments."
           />
-          <dl className="mx-auto mt-14 grid max-w-5xl gap-x-8 gap-y-12 text-center sm:grid-cols-2 lg:grid-cols-4">
-            {proofPoints.map((p) => (
-              <Reveal key={p.label}>
-                <div>
-                  <dd className="font-display text-6xl font-extrabold text-white">
-                    {p.value}
-                    <span className="text-brand">{'suffix' in p ? p.suffix : ''}</span>
-                  </dd>
-                  <dt className="mt-3 leading-snug text-white/55">{p.label}</dt>
-                </div>
+          <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
+            <Reveal>
+              <UspComparisonWidget />
+            </Reveal>
+            <Reveal delay={0.08}>
+              <ChannelReachWidget />
+            </Reveal>
+            <Reveal delay={0.16}>
+              <SpeedToLeadWidget />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== NUMBERS + PIPELINE (inversion) ===================== */}
+      <section className="border-b border-hair bg-dark">
+        <div className="wrap py-20 lg:py-28">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <Reveal>
+                <span className="kicker bg-white/10 text-brand-tint-2">Why agents trust it</span>
+                <h2 className="mt-5 text-4xl leading-[1.05] text-white sm:text-5xl">
+                  Built by someone who has done the reps.
+                </h2>
               </Reveal>
-            ))}
-          </dl>
+              <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10">
+                {proofPoints.map((p) => (
+                  <Reveal key={p.label}>
+                    <div>
+                      <dd className="font-display text-5xl font-extrabold text-white">
+                        {p.value}
+                        <span className="text-brand">{'suffix' in p ? p.suffix : ''}</span>
+                      </dd>
+                      <dt className="mt-2 leading-snug text-white/55">{p.label}</dt>
+                    </div>
+                  </Reveal>
+                ))}
+              </dl>
+            </div>
+            <Reveal delay={0.1}>
+              <PipelineWidget />
+            </Reveal>
+          </div>
         </div>
       </section>
 

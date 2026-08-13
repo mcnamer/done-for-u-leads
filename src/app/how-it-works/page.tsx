@@ -7,6 +7,11 @@ import { buildMetadata } from '@/lib/seo';
 import { breadcrumbSchema, graph } from '@/lib/schema';
 import { Fingerprint, Crosshair, MessageSquareText, Repeat, BarChart3, LayoutGrid } from 'lucide-react';
 import { IconChip } from '@/components/ui/icon-chip';
+import {
+  UspComparisonWidget,
+  ChannelReachWidget,
+  SpeedToLeadWidget,
+} from '@/components/widgets';
 
 export const metadata: Metadata = buildMetadata({
   title: 'How it works',
@@ -128,6 +133,30 @@ export default function HowItWorksPage() {
                 <p className="mt-3 leading-relaxed text-ink-2 group-hover:text-ink">{item.body}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="wrap">
+          <div className="mx-auto max-w-3xl text-center">
+            <Reveal>
+              <Eyebrow>The moving parts</Eyebrow>
+              <h2 className="mt-5 text-4xl leading-[1.05] text-ink sm:text-5xl">
+                What’s running behind the scenes
+              </h2>
+            </Reveal>
+          </div>
+          <div className="mx-auto mt-14 grid max-w-6xl gap-6 lg:grid-cols-3">
+            <Reveal>
+              <UspComparisonWidget />
+            </Reveal>
+            <Reveal delay={0.08}>
+              <ChannelReachWidget />
+            </Reveal>
+            <Reveal delay={0.16}>
+              <SpeedToLeadWidget />
+            </Reveal>
           </div>
         </div>
       </Section>
