@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, Cookie } from 'next/font/google';
 import './globals.css';
 import { SiteChrome } from '@/components/layout/site-chrome';
 import { site } from '@/content/site';
@@ -18,6 +18,14 @@ const jakarta = Plus_Jakarta_Sans({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+// Cookie — script wordmark used as a placeholder logo until final art lands.
+const cookie = Cookie({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-cookie',
   display: 'swap',
 });
 
@@ -58,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const jsonLd = graph(personSchema, localBusinessSchema, websiteSchema);
 
   return (
-    <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable} ${cookie.variable}`}>
       <body>
         <SiteChrome>{children}</SiteChrome>
 

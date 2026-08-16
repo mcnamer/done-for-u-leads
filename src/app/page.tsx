@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
 import { VideoEmbed } from '@/components/video-embed';
+import { HeroFlow } from '@/components/hero-flow';
 import {
   PipelineWidget,
   ChannelReachWidget,
@@ -141,36 +142,25 @@ function SectionHead({
 export default function HomePage() {
   return (
     <>
-      {/* ===================== HERO (centered) ===================== */}
-      <section className="relative isolate overflow-hidden border-b border-hair">
-        <Image
-          src="/images/slider/slide-leadgen.jpg"
-          alt=""
-          aria-hidden
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-[#0b1626]/85 via-[#0f1c2b]/72 to-[#0b1626]/92"
-        />
+      {/* ===================== HERO (minimal, animated) ===================== */}
+      <section className="relative isolate overflow-hidden border-b border-hair bg-white">
+        <HeroFlow />
 
         <div className="wrap relative py-24 text-center lg:py-32">
           <div className="mx-auto max-w-4xl">
             <Reveal>
-              <span className="kicker bg-white text-brand-strong shadow-soft-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-hair bg-white/80 px-4 py-1.5 font-display text-xs font-semibold tracking-[0.14em] text-brand-strong uppercase shadow-soft-sm backdrop-blur">
+                <span aria-hidden className="size-1.5 rounded-full bg-brand-strong" />
                 Real estate lead generation
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mx-auto mt-6 max-w-4xl text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-white">
-                Be the <span className="text-lime-bright">obvious</span> agent to call.
+              <h1 className="mx-auto mt-6 max-w-4xl text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.0] text-ink">
+                Be the <span className="text-brand-strong">obvious</span> agent to call.
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">
+              <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
                 We find what makes you different, then put it in front of the exact people looking
                 for it — with proprietary targeting, micro-audiences and messaging that sounds like
                 you. All done for you.
@@ -184,12 +174,7 @@ export default function HomePage() {
                     <ArrowUpRight aria-hidden />
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-white/40 text-white hover:border-white hover:bg-white/10"
-                >
+                <Button asChild variant="outline" size="lg">
                   <Link href="/how-it-works">See how it works</Link>
                 </Button>
               </div>
@@ -198,26 +183,26 @@ export default function HomePage() {
               <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
                 <span className="flex items-center gap-2">
                   <Stars />
-                  <span className="text-sm font-medium text-white">Built by a 20-year operator</span>
+                  <span className="text-sm font-medium text-ink">Built by a 20-year operator</span>
                 </span>
-                <span className="hidden h-4 w-px bg-white/25 sm:block" />
-                <span className="flex items-center gap-2 text-sm text-white/80">
-                  <ShieldCheck aria-hidden className="size-4 text-lime-bright" />
+                <span className="hidden h-4 w-px bg-hair sm:block" />
+                <span className="flex items-center gap-2 text-sm text-ink-2">
+                  <ShieldCheck aria-hidden className="size-4 text-brand-strong" />
                   First call’s free — no contracts
                 </span>
               </div>
             </Reveal>
 
-            {/* Centered glass stat strip */}
+            {/* Centered stat strip */}
             <Reveal delay={0.25}>
               <dl className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
                 {heroStats.map((s) => (
                   <div
                     key={s.label}
-                    className="rounded-2xl border border-white/20 bg-white/10 px-4 py-4 backdrop-blur-md"
+                    className="rounded-2xl border border-hair bg-white/80 px-4 py-4 shadow-soft-sm backdrop-blur"
                   >
-                    <dd className="font-display text-3xl font-extrabold text-white">{s.value}</dd>
-                    <dt className="mt-1 text-xs text-white/70">{s.label}</dt>
+                    <dd className="font-display text-3xl font-extrabold text-ink">{s.value}</dd>
+                    <dt className="mt-1 text-xs text-ink-2">{s.label}</dt>
                   </div>
                 ))}
               </dl>

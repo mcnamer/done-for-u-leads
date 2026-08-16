@@ -47,6 +47,23 @@ export const nav = [
 /** How many nav links sit to the left of the centered logo. */
 export const navSplit = 4;
 
+/**
+ * Trimmed, balanced navigation for the header — three links each side of the
+ * centered wordmark, so the logo sits at exact optical centre. The full `nav`
+ * (incl. FAQ) still powers the footer and sitemap.
+ */
+export const headerNav = [
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Services', href: '/services' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about-us' },
+  { label: 'Insights', href: '/blogs' },
+  { label: 'Contact', href: '/contact-us' },
+] as const;
+
+/** Links to the left of the centered logo (the rest go right). */
+export const headerNavSplit = 3;
+
 export const legalNav = [
   { label: 'Privacy policy', href: '/privacy-policies' },
   { label: 'Terms & conditions', href: '/terms-and-conditions' },

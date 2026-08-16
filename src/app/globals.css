@@ -36,6 +36,7 @@
   /* Type — friendly geometric grotesk for display, neutral sans for body. */
   --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-cookie), ui-serif, cursive;
 
   /* Soft, blue-tinted elevation. Old `--shadow-hard*` names are kept but now
      resolve to soft shadows so any leftover utility is harmless. */
@@ -208,5 +209,49 @@
     to {
       transform: translateX(-50%);
     }
+  }
+}
+
+/* ── Script wordmark (placeholder logo) ──────────────────────────── */
+.font-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+}
+
+/* ── Hero: minimal white background with drifting grey line artwork ── */
+.hero-lines {
+  animation: heroDrift 42s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes heroDrift {
+  0% {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.16) translate3d(-3%, -2%, 0);
+  }
+}
+.hero-blob {
+  animation: heroFloat 20s ease-in-out infinite;
+  will-change: transform;
+}
+.hero-blob-2 {
+  animation: heroFloat 28s ease-in-out infinite reverse;
+  will-change: transform;
+}
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1.5rem, -1rem, 0) scale(1.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-lines,
+  .hero-blob,
+  .hero-blob-2 {
+    animation: none;
   }
 }

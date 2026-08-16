@@ -16,7 +16,7 @@ import {
   Instagram,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import { nav, navSplit, primaryCta, site, contact, socials } from '@/content/site';
+import { headerNav, headerNavSplit, primaryCta, site, contact, socials } from '@/content/site';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -27,8 +27,8 @@ const socialIcons: Record<string, LucideIcon> = {
   Instagram: Instagram,
 };
 
-const leftNav = nav.slice(0, navSplit);
-const rightNav = nav.slice(navSplit);
+const leftNav = headerNav.slice(0, headerNavSplit);
+const rightNav = headerNav.slice(headerNavSplit);
 
 function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
   return (
@@ -67,13 +67,12 @@ export function SiteHeader() {
   }, [open]);
 
   const Logo = (
-    <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} — home`}>
-      <span className="grid size-10 place-items-center rounded-xl bg-brand-strong font-display text-sm font-extrabold text-white">
-        DL
-      </span>
-      <span className="font-display text-[1.1rem] leading-none font-extrabold tracking-[-0.02em] text-ink">
-        Done For You <span className="text-brand-strong">Leads</span>
-      </span>
+    <Link
+      href="/"
+      className="font-script inline-flex items-end leading-none text-brand-strong transition-colors hover:text-brand-ink"
+      aria-label={`${site.name} — home`}
+    >
+      <span className="text-[2.35rem] leading-[0.8] lg:text-[2.7rem]">doneforuleads</span>
     </Link>
   );
 
@@ -125,6 +124,15 @@ export function SiteHeader() {
                 );
               })}
             </ul>
+            <span aria-hidden className="h-3.5 w-px bg-white/20" />
+            {/* Client login — account entry point, top-right platform convention */}
+            <Link
+              href="/portal"
+              className="flex items-center gap-1.5 font-semibold text-white transition-colors hover:text-brand-tint-2"
+            >
+              <LogIn className="size-3.5" aria-hidden />
+              Client login
+            </Link>
           </div>
         </div>
       </div>
@@ -136,7 +144,7 @@ export function SiteHeader() {
           scrolled ? 'border-hair bg-paper/90 shadow-soft-sm backdrop-blur-md' : 'border-hair bg-paper',
         )}
       >
-        <div className="wrap flex h-16 items-center justify-between gap-4 lg:grid lg:h-20 lg:grid-cols-[1fr_auto_1fr]">
+        <div className="wrap relative flex h-16 items-center justify-between gap-4 lg:h-20">
           {/* Left nav (desktop) */}
           <nav aria-label="Primary left" className="hidden items-center gap-x-5 lg:flex xl:gap-x-7">
             {leftNav.map((item) => (
@@ -144,8 +152,11 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          {/* Logo — left on mobile, centered on desktop */}
-          <div className="flex justify-start lg:justify-center">{Logo}</div>
+          {/* Logo — left on mobile, exact-centered on desktop (absolute so the
+              wider action cluster can't nudge it off centre) */}
+          <div className="flex justify-start lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
+            {Logo}
+          </div>
 
           {/* Right nav + auth/CTA (desktop) / hamburger (mobile) */}
           <div className="flex items-center justify-end gap-3 xl:gap-5">
@@ -155,17 +166,6 @@ export function SiteHeader() {
               ))}
             </nav>
             <span aria-hidden className="hidden h-6 w-px bg-hair lg:block" />
-            {/* Client login — the platform affordance, paired with the primary CTA */}
-            <Link
-              href="/portal"
-              className={cn(
-                'font-display hidden h-10 items-center gap-2 rounded-full border border-brand-strong/30 px-3 text-[0.95rem] whitespace-nowrap',
-                'font-semibold text-brand-strong transition-colors hover:border-brand-strong hover:bg-brand-tint lg:inline-flex xl:px-4',
-              )}
-            >
-              <LogIn className="size-4" aria-hidden />
-              <span className="hidden xl:inline">Client login</span>
-            </Link>
             <Button asChild size="sm" className="hidden lg:inline-flex">
               <Link href={primaryCta.href}>
                 <span className="hidden xl:inline">{primaryCta.label}</span>
@@ -190,7 +190,7 @@ export function SiteHeader() {
       {/* Mobile sheet */}
       <div id="mobile-nav" hidden={!open} className="border-b border-hair bg-paper lg:hidden">
         <nav aria-label="Primary (mobile)" className="wrap flex flex-col py-4">
-          {nav.map((item) => (
+          {headerNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
