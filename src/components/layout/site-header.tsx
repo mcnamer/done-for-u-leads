@@ -9,6 +9,7 @@ import {
   ArrowUpRight,
   Phone,
   Mail,
+  LogIn,
   Linkedin,
   Youtube,
   Facebook,
@@ -115,6 +116,14 @@ export function SiteHeader() {
                 );
               })}
             </ul>
+            <span aria-hidden className="h-3.5 w-px bg-white/20" />
+            <Link
+              href="/portal"
+              className="flex items-center gap-1.5 font-medium text-white transition-colors hover:text-brand-tint-2"
+            >
+              <LogIn className="size-3.5" aria-hidden />
+              Client login
+            </Link>
           </div>
         </div>
       </div>
@@ -176,6 +185,13 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/portal"
+            className="font-display flex items-center gap-2 border-b border-hair py-3.5 text-lg font-semibold text-brand-strong"
+          >
+            <LogIn className="size-5" aria-hidden />
+            Client login
+          </Link>
           <Button asChild size="lg" className="mt-5">
             <Link href={primaryCta.href}>
               {primaryCta.label}
