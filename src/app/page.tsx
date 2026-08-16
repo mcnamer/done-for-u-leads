@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { Reveal } from '@/components/reveal';
 import { VideoEmbed } from '@/components/video-embed';
-import { HeroSlider } from '@/components/hero-slider';
 import {
   PipelineWidget,
   ChannelReachWidget,
@@ -144,16 +143,18 @@ export default function HomePage() {
     <>
       {/* ===================== HERO (centered) ===================== */}
       <section className="relative isolate overflow-hidden border-b border-hair">
-        <HeroSlider
-          slides={[
-            { src: '/images/slider/slide-keys.png', alt: '' },
-            { src: '/images/slider/slide-leadgen.jpg', alt: '' },
-            { src: '/images/slider/slide-3.avif', alt: '' },
-          ]}
+        <Image
+          src="/images/slider/slide-leadgen.jpg"
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-[#0f1c2b]/80 via-[#0f1c2b]/60 to-[#0f1c2b]/85"
+          className="absolute inset-0 bg-gradient-to-b from-[#0b1626]/85 via-[#0f1c2b]/72 to-[#0b1626]/92"
         />
 
         <div className="wrap relative py-24 text-center lg:py-32">

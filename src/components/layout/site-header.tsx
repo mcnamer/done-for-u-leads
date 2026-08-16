@@ -96,8 +96,17 @@ export function SiteHeader() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden xl:inline">Serving agents across the US &amp; Canada</span>
+            {/* Live status — signals a running platform, not a brochure site */}
+            <span className="flex items-center gap-2 font-medium text-white/90">
+              <span aria-hidden className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-[#34d399] opacity-70" />
+                <span className="relative inline-flex size-2 rounded-full bg-[#34d399]" />
+              </span>
+              Platform online
+            </span>
             <span aria-hidden className="hidden h-3.5 w-px bg-white/20 xl:block" />
+            <span className="hidden xl:inline">Serving agents across the US &amp; Canada</span>
+            <span aria-hidden className="h-3.5 w-px bg-white/20" />
             <ul className="flex items-center gap-3">
               {socials.map((s) => {
                 const Icon = socialIcons[s.label];
@@ -116,14 +125,6 @@ export function SiteHeader() {
                 );
               })}
             </ul>
-            <span aria-hidden className="h-3.5 w-px bg-white/20" />
-            <Link
-              href="/portal"
-              className="flex items-center gap-1.5 font-medium text-white transition-colors hover:text-brand-tint-2"
-            >
-              <LogIn className="size-3.5" aria-hidden />
-              Client login
-            </Link>
           </div>
         </div>
       </div>
@@ -146,16 +147,29 @@ export function SiteHeader() {
           {/* Logo — left on mobile, centered on desktop */}
           <div className="flex justify-start lg:justify-center">{Logo}</div>
 
-          {/* Right nav + CTA (desktop) / hamburger (mobile) */}
-          <div className="flex items-center justify-end gap-6">
-            <nav aria-label="Primary right" className="hidden items-center gap-x-5 lg:flex xl:gap-x-7">
+          {/* Right nav + auth/CTA (desktop) / hamburger (mobile) */}
+          <div className="flex items-center justify-end gap-3 xl:gap-5">
+            <nav aria-label="Primary right" className="hidden items-center gap-x-4 lg:flex xl:gap-x-7">
               {rightNav.map((item) => (
                 <NavLink key={item.href} {...item} active={pathname === item.href} />
               ))}
             </nav>
+            <span aria-hidden className="hidden h-6 w-px bg-hair lg:block" />
+            {/* Client login — the platform affordance, paired with the primary CTA */}
+            <Link
+              href="/portal"
+              className={cn(
+                'font-display hidden h-10 items-center gap-2 rounded-full border border-brand-strong/30 px-3 text-[0.95rem] whitespace-nowrap',
+                'font-semibold text-brand-strong transition-colors hover:border-brand-strong hover:bg-brand-tint lg:inline-flex xl:px-4',
+              )}
+            >
+              <LogIn className="size-4" aria-hidden />
+              <span className="hidden xl:inline">Client login</span>
+            </Link>
             <Button asChild size="sm" className="hidden lg:inline-flex">
               <Link href={primaryCta.href}>
-                {primaryCta.label}
+                <span className="hidden xl:inline">{primaryCta.label}</span>
+                <span className="xl:hidden">Book a call</span>
                 <ArrowUpRight aria-hidden />
               </Link>
             </Button>
