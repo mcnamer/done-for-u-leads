@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
-import Link from 'next/link';
 import './globals.css';
-import { SiteHeader } from '@/components/layout/site-header';
-import { SiteFooter } from '@/components/layout/site-footer';
-import { BookingModal } from '@/components/booking/booking-modal';
+import { SiteChrome } from '@/components/layout/site-chrome';
 import { site } from '@/content/site';
 import { SITE_URL } from '@/lib/utils';
 import { graph, localBusinessSchema, personSchema, websiteSchema } from '@/lib/schema';
@@ -63,19 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body>
-        <Link
-          href="#main"
-          className="focus:bg-brand-strong sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:px-5 focus:py-2.5 focus:font-semibold focus:text-white focus:shadow-soft"
-        >
-          Skip to content
-        </Link>
-
-        <SiteHeader />
-
-        <main id="main">{children}</main>
-
-        <SiteFooter />
-        <BookingModal />
+        <SiteChrome>{children}</SiteChrome>
 
         <script
           type="application/ld+json"
