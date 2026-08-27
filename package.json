@@ -2,7 +2,7 @@
   "name": "done-for-u-leads",
   "version": "1.0.0",
   "private": true,
-  "description": "McNamer.com — the flagship personal brand site for Jody McNamer.",
+  "description": "Done For You Leads — real-estate lead generation marketing site and client portal.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

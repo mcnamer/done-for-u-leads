@@ -1,6 +1,6 @@
-# McNamer.com
+# doneforuleads.com
 
-The flagship personal brand site for **Jody McNamer** — broker, mortgage professional, coach and autism advocate. Rebuilt from WordPress/Elementor as a static-first Next.js application.
+**Done For You Leads** — a real-estate lead-generation marketing site plus a client portal, backed by a WordPress analytics/CRM engine. Tagline: *"Be the obvious agent to call."*
 
 - **Framework:** Next.js 15 (App Router) · React 19 · TypeScript (strict)
 - **Styling:** Tailwind CSS v4 (`@theme` tokens, no config file)
@@ -36,9 +36,10 @@ The build currently produces **zero TypeScript errors and zero ESLint errors**, 
 | ---------------------- | -------- | --------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL` | Yes      | Canonical origin. Drives canonical tags, sitemap, OG URLs.             |
 | `RESEND_API_KEY`       | For mail | Delivers contact-form messages. Get one at resend.com.                 |
-| `CONTACT_FROM_EMAIL`   | For mail | A verified sender on your domain, e.g. `McNamer <website@mcnamer.com>` |
-| `CONTACT_TO_EMAIL`     | No       | Inbox for enquiries. Defaults to `jody@mcnamer.com`.                   |
+| `CONTACT_FROM_EMAIL`   | For mail | A verified sender on your domain, e.g. `Done For You Leads <website@doneforuleads.com>` |
+| `CONTACT_TO_EMAIL`     | No       | Inbox for enquiries. Unset falls back to the address in `src/content/site.ts`. |
 | `NEXT_PUBLIC_GA_ID`    | No       | Reserved for analytics.                                                |
+| `WP_API_URL`           | No       | Portal REST base. Unset uses the baked-in default in `src/lib/portal/api.ts`. |
 
 Until `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` are set, `/api/contact` returns a clear 503 telling the visitor to email directly. It never pretends to have sent a message it did not send.
 
@@ -49,12 +50,13 @@ Any other mail provider works — swap the `fetch` in `src/app/api/contact/route
 ## Deploying to Vercel
 
 1. Push to GitHub.
-2. Import the repo in Vercel. Framework preset is detected automatically; no build overrides needed.
-3. Add the environment variables above under **Settings → Environment Variables**.
-4. Point `mcnamer.com` and `www.mcnamer.com` at the project; set `www` to redirect to the apex.
-5. Deploy. Every push to `main` ships.
+2. Import the repo in Vercel. Framework preset (Next.js) is detected automatically; no build overrides needed.
+3. Add the environment variables above under **Settings → Environment Variables**, for Production, Preview and Development.
+4. Under **Settings → Domains**, add `doneforuleads.com` and `www.doneforuleads.com`; set `www` to redirect to the apex.
+5. At the registrar, create the DNS records Vercel shows — apex `A` to `76.76.21.21`, and `www` `CNAME` to `cname.vercel-dns.com`. Vercel's Domains tab is authoritative; use the values it prints.
+6. Deploy. Every push to `main` ships.
 
-**Before you cut DNS over,** run the redirect check in `MIGRATION.md` so no live URL 404s.
+**Note:** `NEXT_PUBLIC_SITE_URL` must match the final domain or canonical tags, the sitemap and OG URLs will point at the wrong origin.
 
 ---
 
