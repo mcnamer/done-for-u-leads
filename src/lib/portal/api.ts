@@ -18,8 +18,23 @@ import { mockCampaigns, mockInvoices, mockLeads, mockMetrics, mockUser } from '.
  *   GET  {WP_API_URL}/invoices
  */
 
-const WP = process.env.WP_API_URL?.replace(/\/$/, '');
+/**
+ * Live backend URL. Prefer the WP_API_URL env var (set in Vercel); fall back to
+ * the current WordPress install so the portal is live without a dashboard step.
+ * NOTE: this is Bluehost's *temporary* URL — once the real domain is attached,
+ * set WP_API_URL in Vercel and it overrides this default.
+ */
+const DEFAULT_WP = 'https://yhr.jon.mybluehost.me/website_9ccbd311/wp-json/jdy/v1';
+const WP = (process.env.WP_API_URL || DEFAULT_WP).replace(/\/$/, '');
 export const isLive = Boolean(WP);
+
+class WpError extends Error {
+  status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.status = status;
+  }
+}
 
 async function wp<T>(path: string, token: string | undefined, init?: RequestInit): Promise<T> {
   const res = await fetch(`${WP}${path}`, {
@@ -34,7 +49,7 @@ async function wp<T>(path: string, token: string | undefined, init?: RequestInit
   });
   if (!res.ok) {
     const body = (await res.json().catch(() => null)) as { message?: string } | null;
-    throw new Error(body?.message ?? `Backend error (${res.status})`);
+    throw new WpError(res.status, body?.message ?? `Backend error (${res.status})`);
   }
   return (await res.json()) as T;
 }
@@ -43,38 +58,51 @@ export async function authenticate(
   email: string,
   password: string,
 ): Promise<Session | null> {
-  if (!WP) {
-    // Demo mode: accept any email + a password of 4+ chars.
+  const demo = (): Session | null => {
+    // Accept any email + a password of 4+ chars.
     if (!email.includes('@') || password.length < 4) return null;
     return { user: { ...mockUser, email } };
-  }
+  };
+
+  if (!WP) return demo();
+
   try {
     const data = await wp<{ token: string; user: PortalUser }>('/auth', undefined, {
       method: 'POST',
       body: JSON.stringify({ email, password }),
     });
     return { user: data.user, token: data.token };
+  } catch (err) {
+    // A real rejection (bad credentials / no portal access) fails the login.
+    const status = err instanceof WpError ? err.status : 0;
+    if (status === 400 || status === 401 || status === 403) return null;
+    // Backend unreachable / 5xx: don't lock everyone out — fall back to demo.
+    return demo();
+  }
+}
+
+async function live<T>(path: string, token: string | undefined, fallback: T): Promise<T> {
+  if (!WP) return fallback;
+  try {
+    return await wp<T>(path, token);
   } catch {
-    return null;
+    // Never crash the portal on a backend hiccup — show demo data instead.
+    return fallback;
   }
 }
 
 export async function getMetrics(session: Session): Promise<Metrics> {
-  if (!WP) return mockMetrics;
-  return wp<Metrics>('/metrics', session.token);
+  return live<Metrics>('/metrics', session.token, mockMetrics);
 }
 
 export async function getLeads(session: Session): Promise<Lead[]> {
-  if (!WP) return mockLeads;
-  return wp<Lead[]>('/leads', session.token);
+  return live<Lead[]>('/leads', session.token, mockLeads);
 }
 
 export async function getCampaigns(session: Session): Promise<Campaign[]> {
-  if (!WP) return mockCampaigns;
-  return wp<Campaign[]>('/campaigns', session.token);
+  return live<Campaign[]>('/campaigns', session.token, mockCampaigns);
 }
 
 export async function getInvoices(session: Session): Promise<Invoice[]> {
-  if (!WP) return mockInvoices;
-  return wp<Invoice[]>('/invoices', session.token);
+  return live<Invoice[]>('/invoices', session.token, mockInvoices);
 }
