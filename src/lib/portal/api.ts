@@ -26,7 +26,8 @@ async function wp<T>(path: string, token: string | undefined, init?: RequestInit
     ...init,
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      // X-JDY-Token is a fallback for hosts that strip the Authorization header.
+      ...(token ? { Authorization: `Bearer ${token}`, 'X-JDY-Token': token } : {}),
       ...(init?.headers ?? {}),
     },
     cache: 'no-store',
