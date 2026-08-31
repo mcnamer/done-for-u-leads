@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { SiteHeader } from './site-header';
 import { SiteFooter } from './site-footer';
 import { BookingModal } from '@/components/booking/booking-modal';
+import { AiAssistant } from '@/components/ai-assistant';
 
 /**
  * Wraps the marketing chrome (header, footer, booking modal) around normal
@@ -31,6 +32,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <main id="main">{children}</main>
       <SiteFooter />
       <BookingModal />
+      <AiAssistant />
     </>
   );
 }
