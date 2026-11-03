@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
   index: false,
 });
 
-const UPDATED = 'July 2026';
+const UPDATED = 'November 2026';
 
 export default function PrivacyPage() {
   return (
@@ -37,9 +37,9 @@ export default function PrivacyPage() {
               <h2>What we collect</h2>
               <p>
                 If you send a message through the contact form, we collect the name, email address,
-                optional phone number, topic and message you provide. If you book a consultation,
-                the scheduling is handled by Motion and is governed by Motion&rsquo;s own privacy
-                policy.
+                optional phone number, topic and message you provide. If you request a free resource,
+                we collect your name and email address. If you book a consultation, the scheduling is
+                handled by Motion and is governed by Motion&rsquo;s own privacy policy.
               </p>
               <p>
                 Like most websites, our host records standard technical information such as IP
@@ -52,6 +52,10 @@ export default function PrivacyPage() {
               <h2>Why we collect it</h2>
               <ul>
                 <li>To reply to your enquiry.</li>
+                <li>
+                  To give you a free resource you requested, and to follow up by email about lead
+                  generation unless you ask us to stop.
+                </li>
                 <li>To schedule and prepare for a consultation you requested.</li>
                 <li>To keep the site secure and to limit automated form abuse.</li>
                 <li>To understand, in aggregate, which content is worth writing more of.</li>

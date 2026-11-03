@@ -18,6 +18,11 @@ export const contactSchema = z.object({
 
 export type ContactInput = z.infer<typeof contactSchema>;
 
+/** The free kit form asks for less, then posts through the same contact route. */
+export const leadKitSchema = contactSchema.pick({ name: true, email: true, company: true });
+
+export type LeadKitInput = z.infer<typeof leadKitSchema>;
+
 export const topicLabels: Record<ContactInput['topic'], string> = {
   'real-estate': 'Buying, selling or investing',
   mortgage: 'Financing or a loan question',

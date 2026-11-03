@@ -1,0 +1,567 @@
+<!doctype html>
+<!--
+  Source for public/resources/close-more-leads-kit.pdf. Edit this file, then rebuild from the repo root:
+  & "C:\Program Files\Google\Chrome\Application\chrome.exe" -headless=new -no-pdf-header-footer -virtual-time-budget=8000 -user-data-dir="$env:TEMP\kit-chrome" -print-to-pdf="$PWD\public\resources\close-more-leads-kit.pdf" "$PWD\scripts\close-more-leads-kit.html"
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Close More Leads Kit | Done For You Leads</title>
+    <meta name="author" content="Jody McNamer" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cookie&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: letter;
+        margin: 0;
+      }
+      :root {
+        --ink: #14202b;
+        --ink-2: #52616f;
+        --hair: #d4dfe9;
+        --brand: #6fa1cc;
+        --strong: #2c6ca6;
+        --deep: #1e4e76;
+        --tint: #eaf2f9;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        color: var(--ink-2);
+        font: 400 10.5pt/1.5 Inter, Arial, sans-serif;
+      }
+      a {
+        color: var(--strong);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .page {
+        display: flex;
+        flex-direction: column;
+        height: 11in;
+        overflow: hidden;
+        padding: 0.65in 0.75in 0.5in;
+        page-break-after: always;
+        position: relative;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+      .foot {
+        border-top: 1px solid var(--hair);
+        display: flex;
+        font-size: 8.5pt;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 0.12in;
+      }
+      h1,
+      h2,
+      h3 {
+        color: var(--ink);
+        font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      }
+      h2 {
+        font-size: 25pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      h3 {
+        font-size: 11.5pt;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      .eyebrow {
+        color: var(--strong);
+        font: 700 8.5pt 'Plus Jakarta Sans', Arial, sans-serif;
+        letter-spacing: 0.14em;
+        margin-bottom: 0.08in;
+        text-transform: uppercase;
+      }
+      .lede {
+        font-size: 11.5pt;
+        margin-top: 0.12in;
+      }
+
+      /* Cover */
+      .cover {
+        padding: 0;
+      }
+      .cover-band {
+        background: linear-gradient(135deg, #1e4e76, #2c6ca6 60%, #6fa1cc);
+        color: #fff;
+        padding: 0.7in 0.75in 0.75in;
+      }
+      .wordmark {
+        font: 400 30pt/1 Cookie, cursive;
+      }
+      .cover-band .eyebrow {
+        color: #d5e6f2;
+        margin: 1.15in 0 0.12in;
+      }
+      .cover-band h1 {
+        color: #fff;
+        font-size: 44pt;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        line-height: 1.04;
+      }
+      .cover-band p {
+        font-size: 14pt;
+        line-height: 1.4;
+        margin-top: 0.22in;
+        max-width: 5.6in;
+      }
+      .cover-body {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 0.5in 0.75in;
+      }
+      .note p + p {
+        margin-top: 0.1in;
+      }
+      .note p {
+        color: var(--ink);
+        font-size: 11.5pt;
+      }
+      .sign {
+        font: 700 10.5pt 'Plus Jakarta Sans', Arial, sans-serif;
+        margin-top: 0.14in;
+      }
+      .inside {
+        display: grid;
+        gap: 0.14in;
+        margin-top: 0.34in;
+      }
+      .inside div {
+        align-items: baseline;
+        background: var(--tint);
+        border-radius: 10pt;
+        display: grid;
+        gap: 0.16in;
+        grid-template-columns: 0.3in 1fr;
+        padding: 0.14in 0.2in;
+      }
+      .inside b {
+        color: var(--strong);
+        font: 800 15pt 'Plus Jakarta Sans', Arial, sans-serif;
+      }
+
+      /* Worksheet */
+      .q {
+        margin-top: 0.19in;
+      }
+      .q small {
+        font-size: 9.5pt;
+      }
+      .line {
+        border-bottom: 1px solid #a9bccd;
+        height: 0.44in;
+      }
+      .edge {
+        background: var(--tint);
+        border-radius: 12pt;
+        margin-top: 0.26in;
+        padding: 0.2in 0.24in 0.22in;
+      }
+      .edge .sentence {
+        color: var(--ink);
+        font-size: 12pt;
+        line-height: 2.25;
+        margin-top: 0.04in;
+      }
+      .blank {
+        border-bottom: 1px solid #7f98ad;
+        display: inline-block;
+      }
+      .edge p:last-child {
+        font-size: 9.5pt;
+        margin-top: 0.08in;
+      }
+
+      /* Scripts */
+      .rules {
+        display: grid;
+        gap: 0.12in;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 0.18in;
+      }
+      .rules div {
+        background: var(--tint);
+        border-radius: 9pt;
+        color: var(--deep);
+        font: 700 10pt/1.3 'Plus Jakarta Sans', Arial, sans-serif;
+        padding: 0.11in 0.14in;
+        text-align: center;
+      }
+      .script {
+        break-inside: avoid;
+        margin-top: 0.2in;
+      }
+      .say {
+        border-left: 3pt solid var(--brand);
+        color: var(--ink);
+        margin-top: 0.05in;
+        padding: 0.02in 0 0.02in 0.15in;
+      }
+      .say + .say {
+        margin-top: 0.08in;
+      }
+      .say em {
+        background: var(--tint);
+        border-radius: 3pt;
+        color: var(--deep);
+        font-style: normal;
+        font-weight: 500;
+        padding: 0 3pt;
+      }
+      .hint {
+        font-size: 9.5pt;
+        margin-top: 0.03in;
+      }
+      .legal {
+        font-size: 8.5pt;
+        margin-top: 0.16in;
+      }
+
+      /* Tables */
+      table {
+        border-collapse: collapse;
+        margin-top: 0.1in;
+        width: 100%;
+      }
+      th {
+        color: var(--ink);
+        font: 700 9pt 'Plus Jakarta Sans', Arial, sans-serif;
+        text-align: left;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--hair);
+        padding: 0.062in 0.1in;
+      }
+      td:first-child,
+      th:first-child {
+        padding-left: 0;
+      }
+      td:nth-child(2) {
+        background: var(--tint);
+        color: var(--deep);
+        font-weight: 500;
+        text-align: center;
+      }
+      th:nth-child(2) {
+        background: var(--tint);
+        color: var(--deep);
+        text-align: center;
+      }
+      tr.calc td:first-child {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      tr.first td {
+        border-top: 2px solid var(--brand);
+      }
+      .rhythm td:nth-child(2) {
+        background: none;
+        color: inherit;
+        font-weight: 400;
+        text-align: left;
+      }
+      .rhythm td:first-child {
+        color: var(--ink);
+        font-weight: 600;
+        white-space: nowrap;
+        width: 1in;
+      }
+      .reads {
+        display: grid;
+        gap: 0.06in;
+        margin-top: 0.08in;
+      }
+      .reads b {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .cta {
+        background: linear-gradient(135deg, #1e4e76, #2c6ca6 65%, #6fa1cc);
+        border-radius: 12pt;
+        color: #fff;
+        margin-top: 0.24in;
+        padding: 0.22in 0.28in;
+      }
+      .cta h3 {
+        color: #fff;
+        font-size: 15pt;
+        font-weight: 800;
+      }
+      .cta p {
+        font-size: 10pt;
+        margin-top: 0.05in;
+      }
+      .cta a {
+        color: #fff;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cover -->
+    <section class="page cover">
+      <div class="cover-band">
+        <div class="wordmark">doneforuleads</div>
+        <p class="eyebrow">Free kit for real estate agents</p>
+        <h1>The Close More Leads Kit</h1>
+        <p>Find your edge, know what to say when a lead comes in, and see what each closing really costs.</p>
+      </div>
+      <div class="cover-body">
+        <div class="note">
+          <p>Leads cost money. What you do with them decides how much of that money comes back.</p>
+          <p>
+            This kit gives you three things you can use today, whether you ever work with us or not. Use what
+            helps, and change the words until they sound like you.
+          </p>
+          <p class="sign">Jody McNamer, Done For You Leads</p>
+        </div>
+        <div class="inside">
+          <div>
+            <b>1</b>
+            <span><h3>Find Your Edge worksheet</h3>Pin down the one clear reason a client should pick you.</span>
+          </div>
+          <div>
+            <b>2</b>
+            <span><h3>First-contact scripts</h3>A text, a call, a voicemail and an email for when a new lead comes in.</span>
+          </div>
+          <div>
+            <b>3</b>
+            <span><h3>Cost-per-closing worksheet</h3>See what you pay in advertising for each closed transaction.</span>
+          </div>
+        </div>
+        <div class="foot">
+          <span>doneforuleads.com</span>
+          <span>+1 (206) 910-6880</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 1 -->
+    <section class="page">
+      <p class="eyebrow">Part 1</p>
+      <h2>Find your edge</h2>
+      <p class="lede">
+        Most agents look identical online. Your edge is the one clear reason a client should pick you over everyone
+        else in your market. Answer these five questions, then write your sentence.
+      </p>
+
+      <div class="q">
+        <h3>1. Who do you serve best?</h3>
+        <small>Be specific: an area, a price band, a kind of client.</small>
+        <div class="line"></div>
+      </div>
+      <div class="q">
+        <h3>2. What do clients thank you for after closing?</h3>
+        <small>Write their words, not yours.</small>
+        <div class="line"></div>
+      </div>
+      <div class="q">
+        <h3>3. What do you do that most agents in your market don&rsquo;t?</h3>
+        <small>Think about how you work, not only what you sell.</small>
+        <div class="line"></div>
+      </div>
+      <div class="q">
+        <h3>4. What can you prove?</h3>
+        <small>Reviews, results, numbers, or a story you can tell.</small>
+        <div class="line"></div>
+      </div>
+      <div class="q">
+        <h3>5. What does a client miss out on if they pick someone else?</h3>
+        <small>Say it plainly, without putting other agents down.</small>
+        <div class="line"></div>
+      </div>
+
+      <div class="edge">
+        <h3>Your edge in one sentence</h3>
+        <p class="sentence">
+          I help <span class="blank" style="width: 2.2in"></span> get <span class="blank" style="width: 2.5in"></span>
+          by <span class="blank" style="width: 5.4in"></span>.
+        </p>
+        <p>
+          <strong>The test:</strong> could another agent in your market say the same sentence? If yes, go back to
+          question 3. When it passes, put it in your bio, your ads and your first message to every lead.
+        </p>
+      </div>
+
+      <div class="foot"><span>The Close More Leads Kit</span><span>doneforuleads.com</span></div>
+    </section>
+
+    <!-- Part 2 -->
+    <section class="page">
+      <p class="eyebrow">Part 2</p>
+      <h2>First-contact scripts</h2>
+      <p class="lede">
+        When a lead reaches out, your first job is to answer them and start a conversation. Fill in the highlighted
+        words, then make it sound like you.
+      </p>
+      <div class="rules">
+        <div>Reply fast</div>
+        <div>Say why you&rsquo;re reaching out</div>
+        <div>Ask one easy question</div>
+      </div>
+
+      <div class="script">
+        <h3>The first text</h3>
+        <p class="hint">Send it as soon as you can. Keep it short enough to answer with one thumb.</p>
+        <p class="say">
+          Hi <em>name</em>, it&rsquo;s <em>your name</em> with <em>brokerage</em>. You asked about <em>what they asked
+          about</em>. Happy to help. Are you hoping to move soon, or just getting a feel for the market?
+        </p>
+      </div>
+
+      <div class="script">
+        <h3>The first call</h3>
+        <p class="hint">Their request is your reason for calling, so lead with it.</p>
+        <p class="say">
+          Hi <em>name</em>, this is <em>your name</em>. You asked about <em>what they asked about</em>, so I wanted to
+          reach out while it&rsquo;s fresh. Do you have a minute for a quick question?
+        </p>
+        <p class="say">What got you looking at <em>what they asked about</em>?</p>
+        <p class="say">If this all worked out the way you want, what would be different a year from now?</p>
+      </div>
+
+      <div class="script">
+        <h3>Asking for the appointment</h3>
+        <p class="hint">Offer two times. It&rsquo;s easier to pick one than to think of one.</p>
+        <p class="say">
+          The easiest next step is 15 minutes where I walk you through <em>the thing they care about</em>. Is
+          <em>day and time</em> or <em>day and time</em> better for you?
+        </p>
+      </div>
+
+      <div class="script">
+        <h3>When they say &ldquo;I&rsquo;m just looking&rdquo;</h3>
+        <p class="say">
+          That&rsquo;s completely fine, and I won&rsquo;t push. What&rsquo;s one thing you&rsquo;d want to know before
+          you&rsquo;d feel ready to make a move?
+        </p>
+      </div>
+
+      <p class="legal">
+        Only call or text people who gave you permission, and follow your state, brokerage and do-not-call rules.
+      </p>
+      <div class="foot"><span>The Close More Leads Kit</span><span>doneforuleads.com</span></div>
+    </section>
+
+    <!-- Part 2, continued -->
+    <section class="page">
+      <p class="eyebrow">Part 2, continued</p>
+      <h2>If they don&rsquo;t answer</h2>
+      <p class="lede">
+        One missed call doesn&rsquo;t mean they&rsquo;ve lost interest. Stay useful, stay polite, and keep going until
+        they buy, sell or ask you to stop.
+      </p>
+
+      <div class="script">
+        <h3>The voicemail</h3>
+        <p class="hint">Under 20 seconds. Give them a reason to look for your text.</p>
+        <p class="say">
+          Hi <em>name</em>, it&rsquo;s <em>your name</em>. You asked about <em>what they asked about</em>, and I have
+          an answer for you. I&rsquo;ll text the details to this number now. You can reach me at <em>your number</em>.
+        </p>
+      </div>
+
+      <div class="script">
+        <h3>The email</h3>
+        <p class="hint">Subject: Your question about <em style="font-style: normal; font-weight: 600">what they asked about</em></p>
+        <p class="say">Hi <em>name</em>,</p>
+        <p class="say">
+          Thanks for reaching out about <em>what they asked about</em>. Here&rsquo;s the short answer:
+          <em>one or two helpful sentences</em>.
+        </p>
+        <p class="say">
+          So I can send you what&rsquo;s actually useful: are you hoping to move soon, or just getting a feel for the
+          market?
+        </p>
+        <p class="say"><em>Your name</em>, <em>your number</em></p>
+      </div>
+
+      <div class="script">
+        <h3>A simple follow-up rhythm</h3>
+        <p class="hint">A starting point. Change it to fit your market and how your leads like to talk.</p>
+        <table class="rhythm">
+          <tr><td>Right away</td><td>Send the first text, then call.</td></tr>
+          <tr><td>Next day</td><td>Call again, at a different time of day.</td></tr>
+          <tr><td>Day 3</td><td>Send one useful thing: homes that fit, or a short market note.</td></tr>
+          <tr><td>Day 7</td><td>Call, or send a short video if you&rsquo;ve been getting no answer.</td></tr>
+          <tr><td>Each month</td><td>Check in with something worth reading, until they buy, sell or ask you to stop.</td></tr>
+        </table>
+      </div>
+
+      <div class="foot"><span>The Close More Leads Kit</span><span>doneforuleads.com</span></div>
+    </section>
+
+    <!-- Part 3 -->
+    <section class="page">
+      <p class="eyebrow">Part 3</p>
+      <h2>What does a closing cost you?</h2>
+      <p class="lede">
+        If you can&rsquo;t name this number, you can&rsquo;t tell which leads are worth paying for. Fill in one column a
+        month. The example uses made-up numbers to show the math. It&rsquo;s not a benchmark or a promise.
+      </p>
+
+      <table>
+        <tr>
+          <th></th>
+          <th>Example</th>
+          <th>Month 1</th>
+          <th>Month 2</th>
+          <th>Month 3</th>
+        </tr>
+        <tr><td>A. Ad spend</td><td>$1,000</td><td></td><td></td><td></td></tr>
+        <tr><td>B. Leads</td><td>40</td><td></td><td></td><td></td></tr>
+        <tr><td>C. Leads you spoke with</td><td>20</td><td></td><td></td><td></td></tr>
+        <tr><td>D. Appointments</td><td>4</td><td></td><td></td><td></td></tr>
+        <tr><td>E. Closings</td><td>1</td><td></td><td></td><td></td></tr>
+        <tr class="calc first"><td>Cost per lead (A &divide; B)</td><td>$25</td><td></td><td></td><td></td></tr>
+        <tr class="calc"><td>Cost per appointment (A &divide; D)</td><td>$250</td><td></td><td></td><td></td></tr>
+        <tr class="calc"><td>Cost per closing (A &divide; E)</td><td>$1,000</td><td></td><td></td><td></td></tr>
+        <tr class="calc"><td>Call-to-close (E &divide; C)</td><td>5%</td><td></td><td></td><td></td></tr>
+      </table>
+      <p class="hint" style="margin-top: 0.07in">
+        Closings can land months after the lead came in, so look at several months together.
+      </p>
+
+      <div class="script">
+        <h3>What your numbers are telling you</h3>
+        <div class="reads">
+          <p><b>You&rsquo;re reaching too few leads (C is low next to B):</b> reply faster, and use the rhythm in Part 2.</p>
+          <p><b>Conversations aren&rsquo;t becoming appointments (D is low next to C):</b> practice the scripts in Part 2.</p>
+          <p><b>Appointments aren&rsquo;t becoming clients (E is low next to D):</b> go back to your edge in Part 1.</p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h3>Rather have all of this done for you?</h3>
+        <p>
+          Done For You Leads defines your USP, builds and runs your campaigns, handles the follow-up and reports what
+          came in, what it cost and what converted. Our leads average a 6% call-to-close ratio.
+        </p>
+        <p>
+          The first strategy call is free: 30 minutes, no obligation.
+          <a href="https://doneforuleads.com/book">Book at doneforuleads.com/book</a> or call
+          <a href="tel:+12069106880">+1 (206) 910-6880</a>.
+        </p>
+      </div>
+
+      <div class="foot"><span>The Close More Leads Kit</span><span>jody@doneforuleads.com</span></div>
+    </section>
+  </body>
+</html>

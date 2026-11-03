@@ -7,6 +7,7 @@ import {
   Menu,
   X,
   ArrowUpRight,
+  Gift,
   Phone,
   Mail,
   LogIn,
@@ -93,6 +94,13 @@ export function SiteHeader() {
               <Mail className="size-3.5" aria-hidden />
               {contact.email}
             </a>
+            <Link
+              href="/free-resources"
+              className="flex items-center gap-1.5 font-semibold text-white transition-colors hover:text-brand-tint-2"
+            >
+              <Gift className="size-3.5" aria-hidden />
+              Free resources
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             {/* Live status — signals a running platform, not a brochure site */}
@@ -199,6 +207,13 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/free-resources"
+            className="font-display flex items-center gap-2 border-b border-hair py-3.5 text-lg font-semibold text-brand-strong"
+          >
+            <Gift className="size-5" aria-hidden />
+            Free resources
+          </Link>
           <Link
             href="/portal"
             className="font-display flex items-center gap-2 border-b border-hair py-3.5 text-lg font-semibold text-brand-strong"

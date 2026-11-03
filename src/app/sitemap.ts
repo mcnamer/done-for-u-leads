@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl('/book'), lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: absoluteUrl('/blogs'), lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
     {
+      url: absoluteUrl('/free-resources'),
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: absoluteUrl('/contact-us'),
       lastModified: now,
       changeFrequency: 'yearly',

@@ -41,6 +41,7 @@ export const nav = [
   { label: 'FAQ', href: '/faq' },
   { label: 'About', href: '/about-us' },
   { label: 'Insights', href: '/blogs' },
+  { label: 'Free resources', href: '/free-resources' },
   { label: 'Contact', href: '/contact-us' },
 ] as const;
 

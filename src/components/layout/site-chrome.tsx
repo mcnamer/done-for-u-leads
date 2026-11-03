@@ -7,6 +7,7 @@ import { SiteHeader } from './site-header';
 import { SiteFooter } from './site-footer';
 import { BookingModal } from '@/components/booking/booking-modal';
 import { AiAssistant } from '@/components/ai-assistant';
+import { LeadKitPopup } from '@/components/lead-kit-popup';
 
 /**
  * Wraps the marketing chrome (header, footer, booking modal) around normal
@@ -33,6 +34,7 @@ export function SiteChrome({ children }: { children: ReactNode }) {
       <SiteFooter />
       <BookingModal />
       <AiAssistant />
+      <LeadKitPopup />
     </>
   );
 }
